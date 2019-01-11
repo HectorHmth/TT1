@@ -1,0 +1,75 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC3}{Consultar Locales}{Cuando el \getElementById[Stakeholder]{Cliente} quiere realizar un pedido a un local, la aplicación determina la ubicación del cliente en la Tierra mediante el módulo de GPS que proporciona los valores de longitud y latitud que van a ser utilizados para encontrar los locales más cercanos a la posición del cliente. Así mismo, si el cliente conociese el nombre de un local en particular podrá realizar su búsqueda en el sistema.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Francisco Isidoro Mera Torres}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{Definir un mecanismo mediante el cual el Cliente pueda encontrar locales con base en su posición o experiencia y así seleccionar uno para agregar o quitar los artículos que va a consumir así como para conocer más información acerca del local.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{local.nombreLocal}.
+		\Titem \getElementById[Entidad]{local.nuLatitud}.
+		\Titem \getElementById[Entidad]{local.nuLatitud}.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{local.nombreLocal}.
+		\Titem \getElementById[Entidad]{local.horaInicio}.
+		\Titem \getElementById[Entidad]{local.horaFin}.
+		\Titem \getElementById[Entidad]{local.nuRating}.
+		\Titem \getElementById[Entidad]{local.foto}.
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem El cliente debe haber iniciado sesión en la aplicación.
+		\Titem El cliente debe tener activado y habilitado el servicio de geolocalización en su dispositivo móvil.	
+		\Titem Debe existir al menos un local en estado de \textbf{Publicado} para ser desplegado.		
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem El cliente podrá consultar la lista de productos de los locales que se despliegan en pantalla.
+		\Titem El cliente podrá consultar la información del local como lo es su ubicación
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{No aplica}
+	\UCitem{Errores}{\begin{Titemize}
+		\Titem \UCerr{Uno}{Cuando el cliente no tenga habilitado el servicio de geolocalización en su dispositivo}{se desplegará en la pantalla el mensaje \getElementById[MSG]{MSGMOR1}.}
+		\Titem \UCerr{Dos}{Cuando no existe al menos un local cerca de la posición del cliente}{se desplegará en la pantalla el mensaje \getElementById[MSG]{MSGMOR2}.}
+		\Titem \UCerr{Tres}{Cuando no exista al menos un local con un nombre que contenga las palabras ingresadas por el Cliente}{se desplegará en la pantalla el mensaje \getElementById[MSG]{MSG3}.}
+	\end{Titemize}}
+	\UCitem{Viene de}{\getElementById[CU]{CUMAU1}}
+	\end{UseCase}
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Solicita consultar los locales más cercanos a su hubicación, presionando el icono \homeIcon{Home} del menú \getElementById[IU]{MN01}. \refTray{A}
+		\UCpaso Verifica que la opción de geolocalización del dispositivo del actor se encuentre habilitada.\refTray{B}
+		\UCpaso \label{CUMC3:Return} Obtiene la longitud y la latitud de la ubicación actual del dispositivo.\refTray{C}
+		\UCpaso Obtiene la información de al menos un local que se encuentre a una distancia de 2km a la redonda del actor.\refErr{Dos}
+		\UCpaso \label{CUMC3:Fin}Muestra la información obtenida de los locales como se muestra en la pantalla \getElementById[IU]{IUMC3}.
+	\end{UCtrayectoria}
+	
+		\begin{UCtrayectoriaA}{A}{El actor consulta los locales iniciando sesión en al sistema con la aplicación móvil}
+		\UCpaso Solicita consultar los locales más cercanos a su hubicación 
+		\UCpaso[\UCactor] Habilita la opción para la geolocalización presionando el botón \IUbutton{Permitir}.
+		\UCpaso Regresa al paso \ref{CUMC3:Return} de la trayectoria principal.
+	\end{UCtrayectoriaA}
+	
+	
+	\begin{UCtrayectoriaA}{A}{La opción de geolocalización del dispositivo no está activada}
+		\UCpaso Solicita al actor habilitar la opción de geolocalización como se muestra en la pantalla \getElementById[IU]{IUMC3}
+		\UCpaso[\UCactor] Habilita la opción para la geolocalización presionando el botón \IUbutton{Permitir}.
+		\UCpaso Regresa al paso \ref{CUMC3:Return} de la trayectoria principal.
+	\end{UCtrayectoriaA}
+	
+	\begin{UCtrayectoriaA}{B}{El actor realizará la búsqueda de un local por nombre.}
+		\UCpaso[\UCactor] Indica que va a realizar la búsqueda por nombre de un local ingresando texto como se muestra en la pantalla \getElementById[IU]{UIMC3}.
+		\UCpaso Obtiene el texto ingresado por el actor.
+		\UCpaso Obtiene la información de los locales cuyo nombre contenga las palabras ingresadas por el actor.\refErr{Tres}
+		\UCpaso Muestra la información obtenida de los locales como se muestra en la pantalla \getElementById[IU]{UIMC3}.
+	\end{UCtrayectoriaA}
+
+	
+	\UCExtensionPoint{Consultar Información de Local}{El actor quiere conocer la información del local.}{A partir del paso \ref{CUMC3:Fin}}{\getElementById[CU]{CUMC3.1}}
+	
+	\UCExtensionPoint{Consultar Lista de Productos}{El actor va a realizar la consulta de la lista de productos disponibles de un local seleccionado.}{A partir del paso \ref{CUMC3:Fin}}{\getElementById[CU]{CUMC3.2}}

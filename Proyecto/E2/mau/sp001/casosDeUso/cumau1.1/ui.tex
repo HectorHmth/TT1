@@ -1,0 +1,22 @@
+%!TEX root = ../../prueba.tex
+\begin{IU}{IUMAU1.1}{Registrar Nueva Cuenta de Usuario}{En esta pantalla la \getElementById[Stakeholder]{Persona} va a poder registrar una nueva cuenta de usuario en el sistema, para que pueda acceder el mismo y así tener acceso a las funcionalidades que ofrece el sistema a un usuario con el rol de \getElementById[Actor]{Cliente}.\\
+		
+La pantalla despelgará la siguente información:
+\begin{itemize}
+	\item Formulario con los campos: \textbf{Nombre(s)}, \textbf{Primer Apellido}, \textbf{Segundo Apellido}, \textbf{Correo Electrónico}, \textbf{Usuario} y \textbf{Contraseña}.
+	\item Botón \textbf{Aceptar}.
+	\item Botón \textbf{Cancelar}.
+\end{itemize}
+
+
+
+ }{casosDeUso/cumau1.1/UIMAU04}
+	\item[Acciones:]\hspace{1pt}
+		\begin{Citemize}
+			\item \IUbutton{Aceptar} Al presionar este botón, el sistema tomará los datos insertados en el formulario y con base a ellos llevará acabo el proceso de registro de una nueva cuenta de usuario.
+			
+			\item \IUbutton{Cancelar} Al presionar este botón, la persona indica que desea cancelar la operación de registro. Redirige a la pantalla \getElementById[IU]{IUMAU1}.
+			
+			\item \slasheyeIcon{} Al presionar este botón, el contenido del campo ''Contraseña'' se mostrará visible.
+		\end{Citemize}
+\end{IU}

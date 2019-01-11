@@ -1,0 +1,96 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMA1.1}{Registrar Nueva Cuenta de Usuario}{Cuando una \getElementById[Stakeholder]{Persona} quiere registrar una nueva cuenta de usuario en el sistema, deberá ingresar en un formulario sus datos personales como lo son: \textbf{nombre}, \textbf{apellidos}, \textbf{correo electrónico} y \textbf{número telefónico}; así mismo deberá ingresar los datos que pertenecerán a su cuenta de usuario como lo son: \textbf{nombre de usuario} y \textbf{contraseña}. Estos datos nos ayudarán a identificar al usuario y de esa forma vincularlo al sistema, mientras que los datos de cuenta únicamente se usarán para que el usuario pueda tener acceso al mismo. Si los datos ingresados por la \getElementById[Stakeholder]{Persona} fuerón validados y registrados de forma exitosa por el sistema, se mostrará la pantalla de inicio de sesión para que pueda ingresar al sistema con su cuenta recién creada.\\}
+	
+	%DESCRIPCIÓN DEL CASO DE USO
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{López Ayala Eric Alejandro}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Baja}
+	\UCitem{Volatilidad}{Media}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Persona}}
+	\UCitem{Propósito}{Definir un mecanismo mediante el cual las personas puedan registrarse dentro del sistema, y de esa forma poder obtener acceso a las funcionalidades que ofrece el sistema a los usuarios que están registrados dentro del mismo.}
+	\UCitem{Entradas}{
+		\begin{Titemize}
+			%DATOS PERSONALES DE LA PERSONA
+			\Titem \getElementById[Entidad]{Persona.nombre}.
+			\Titem \getElementById[Entidad]{Persona.primerApellido}.
+			\Titem \getElementById[Entidad]{Persona.segundoApellido}.
+			\Titem \getElementById[Entidad]{Cuenta.correoElectronico}.
+			
+			%DATOS DE CUENTA
+			\Titem \getElementById[Entidad]{Cuenta.nombreDeUsuario}.
+			\Titem \getElementById[Entidad]{Cuenta.contrasena}.
+		\end{Titemize}
+	}
+
+	%Aqui me faltaria el mensaje de cuenta registrada exitosamente
+	\UCitem{Salidas}{
+		\begin{Titemize}
+			\Titem \getElementById[MSG]{MSG1}
+			%Se que es operación exitosa, pero creo que debe ser un mensaje más personalizado :9
+		\end{Titemize}
+	}
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			\Titem La persona que se va a registrar en el sistema deberá contar con un número telefónico válido.
+			%Aquí me imagino que iría una referencia a una regla de negocio para indicar que es un número telefónico válido
+			\Titem La persona que se va a registrar en el sistema deberá contar con un correo electrónico válido.
+			%De la misma forma debe haber una referencia a una regla de negocio para indicar que es un correo electrónico válido
+			\Titem El nombre de usuario no debe existir en el sistema. %Es el nombre de usuario o el email mmmm... OJO AQUÍ :v
+		\end{Titemize}
+	}	
+	\UCitem{Postcondiciones}{
+		\begin{Titemize}
+			\Titem La persona tendrá registrada su cuenta de usuario en el sistema.
+		\end{Titemize}
+	}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR]{BR-MAU003}
+		\end{Titemize}
+	}
+	%Aqui me siento que faltan mas mensajes...
+	\UCitem{Errores}{
+		\begin{Titemize}	
+			\Titem \UCerr{Uno}{Los campos marcados en el formulario como obligatorios están vacios}{se muestra el mensaje \getElementById[MSG]{MSG2}}
+			
+			\Titem \UCerr{Dos}{Alguno de los campos dentro del formulario no cumple con el formato establecido dentro de las reglas de negocio correspondiente a dicho campo}{se muestra el mensaje \getElementById[MSG]{MSG6}}
+			
+			\Titem \UCerr{Tres}{El nombre del usuario posee una cuenta ya asociada.}{Se muestra el mensaje \getElementById[MSG]{MSGMAU4} en la pantalla \getElementById[IU]{IUMAU1.1}, vuelve al paso 3 de la \refTray{Principal}.}
+		\end{Titemize}
+	}
+	\UCitem{Viene de}{No aplica.}
+\end{UseCase}
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Presiona el enlace ''Registrate'' de la pantalla \getElementById[IU]{IUMAU01W}.
+		
+		\UCpaso Mostrará la pantalla \getElementById[IU]{IUMAU1.1}.
+		
+		\UCpaso[\UCactor] Ingresa los datos de entrada solicitados en la pantalla \getElementById[IU]{IUMAU1.1}.
+		
+		\UCpaso[\UCactor] Indica que ha concluido de ingresar los datos de entrada en la pantalla \getElementById[IU]{IUMAU1.1}, presionando el botón \IUbutton{Aceptar}.\refTray{A}.
+		
+		\UCpaso Verifica que los campos marcados como obligatorios no estén vacíos con base en la regla de negocio \getElementById[BR]{BR001}.
+		
+		\UCpaso Verifica que los datos ingresados sean correctos y/o válidos.
+	
+		\UCpaso Verifica que no exista una cuenta asociada al actor con el \getElementById[Entidad]{Cuenta.nombreDeUsuario} ingresado.
+		
+		\UCpaso Registra la cuenta del actor y le asocia el estado \textbf{Activa}, con base a la máquina de estados \getElementById[MAQ]{MAQ-MAU01}.
+		
+		\UCpaso Redirecciona al actor a la pantalla \getElementById[IU]{IUMAU01W}, incluye \getElementById[CU]{CUMAU1}.
+	\end{UCtrayectoria}
+
+	\begin{UCtrayectoriaA}{A}{El usuario decide cancelar el registro}
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Cancelar} de la pantalla \getElementById[IU]{IUMAU1.1}.
+		
+		\UCpaso Cancela el registro.
+		
+		\UCpaso Regresa al paso 9 de la \refTray{Principal}.
+	\end{UCtrayectoriaA}
+	

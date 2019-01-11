@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+        <data>
+            <variable
+                name="viewModel"
+                type="mx.ipn.escom.prueba.coffeeapp.viewmodel.CuentaViewModel"/>
+        </data>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.CuentaFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_account_circle_black_24dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{viewModel.nombrePersona}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+
+                />
+        </LinearLayout>
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="Notificaciones"
+            app:icon="@drawable/ic_notifications_black_24dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAlignment="textStart"
+            android:padding="20dp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="Formas de Pago"
+            app:icon="@drawable/ic_attach_money_black_24dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAlignment="textStart"
+            android:padding="20dp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="Cerrar Sesión"
+            app:icon="@drawable/ic_cancel_black_24dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAlignment="textStart"
+            android:padding="20dp"
+            android:onClick="cerrarSesion"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>
+</layout>

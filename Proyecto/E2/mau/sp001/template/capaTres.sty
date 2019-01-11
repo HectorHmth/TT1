@@ -1,0 +1,295 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{capaTres}[2017/06/24 Capa tres. Persistencia de Datos]
+
+\RequirePackage{template/capaDos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bases de Datos
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DTLnewdb{requerimientos}
+\DTLifdbempty{requerimientos}{
+    \DTLaddcolumn{requerimientos}{id}
+    \DTLaddcolumn{requerimientos}{type}
+    \DTLaddcolumn{requerimientos}{name}
+    \DTLaddcolumn{requerimientos}{elementdescriptor}
+}{
+	% nothing to do.
+}
+\DTLloaddb{requerimientosConsulta}{db/DBRequerimientos.csv}
+	\DTLaddcolumn{requerimientosConsulta}{id}
+	\DTLaddcolumn{requerimientosConsulta}{type}
+	\DTLaddcolumn{requerimientosConsulta}{name}
+    \DTLaddcolumn{requerimientosConsulta}{elementdescriptor}
+
+
+\DTLnewdb{stakeholders}
+\DTLifdbempty{stakeholders}{
+    \DTLaddcolumn{stakeholders}{id}
+    \DTLaddcolumn{stakeholders}{type}
+    \DTLaddcolumn{stakeholders}{name}
+    \DTLaddcolumn{stakeholders}{elementdescriptor}
+}{
+	% nothing to do.
+}
+\DTLloaddb{stakeholdersConsulta}{db/DBStakeholders.csv}
+	\DTLaddcolumn{stakeholdersConsulta}{id}
+	\DTLaddcolumn{stakeholdersConsulta}{type}
+	\DTLaddcolumn{stakeholdersConsulta}{name}
+    \DTLaddcolumn{stakeholdersConsulta}{elementdescriptor}
+
+
+\DTLnewdb{terminos}
+\DTLifdbempty{terminos}{
+	\DTLaddcolumn{terminos}{id}
+    \DTLaddcolumn{terminos}{type}
+    \DTLaddcolumn{terminos}{name}
+    \DTLaddcolumn{terminos}{elementdescriptor}
+}{
+	%Nada
+}
+
+\DTLloaddb{terminosConsulta}{db/DBTerminos.csv}
+	\DTLaddcolumn{terminosConsulta}{id}
+	\DTLaddcolumn{terminosConsulta}{type}
+	\DTLaddcolumn{terminosConsulta}{name}
+    \DTLaddcolumn{terminosConsulta}{elementdescriptor}
+
+
+\DTLnewdb{reglasDeNegocio}
+\DTLifdbempty{reglasDeNegocio}{
+	\DTLaddcolumn{reglasDeNegocio}{id}
+    \DTLaddcolumn{reglasDeNegocio}{type}
+    \DTLaddcolumn{reglasDeNegocio}{name}
+    \DTLaddcolumn{reglasDeNegocio}{elementdescriptor}
+}{
+	%Nada
+}
+
+\DTLloaddb{reglasDeNegocioConsulta}{db/DBBR.csv}
+	\DTLaddcolumn{reglasDeNegocioConsulta}{id}
+	\DTLaddcolumn{reglasDeNegocioConsulta}{type}
+	\DTLaddcolumn{reglasDeNegocioConsulta}{name}
+    \DTLaddcolumn{reglasDeNegocioConsulta}{elementdescriptor}
+
+
+\DTLnewdb{maquinas}
+\DTLifdbempty{maquinas}{
+	\DTLaddcolumn{maquinas}{id}
+    \DTLaddcolumn{maquinas}{type}
+    \DTLaddcolumn{maquinas}{name}
+    \DTLaddcolumn{maquinas}{elementdescriptor}
+}{
+	%Nada
+}
+
+\DTLloaddb{maquinasConsulta}{db/DBMaquinas.csv}
+	\DTLaddcolumn{maquinasConsulta}{id}
+	\DTLaddcolumn{maquinasConsulta}{type}
+	\DTLaddcolumn{maquinasConsulta}{name}
+    \DTLaddcolumn{maquinasConsulta}{elementdescriptor}
+    
+\DTLnewdb{casosDeUso}
+\DTLifdbempty{casosDeUso}{
+	\DTLaddcolumn{casosDeUso}{id}
+    \DTLaddcolumn{casosDeUso}{type}
+    \DTLaddcolumn{casosDeUso}{name}
+    \DTLaddcolumn{casosDeUso}{elementdescriptor}
+}{
+	%Nada
+}
+
+\DTLloaddb{casosDeUsoConsulta}{db/DBCU.csv}
+	\DTLaddcolumn{casosDeUsoConsulta}{id}
+	\DTLaddcolumn{casosDeUsoConsulta}{type}
+	\DTLaddcolumn{casosDeUsoConsulta}{name}
+    \DTLaddcolumn{casosDeUsoConsulta}{elementdescriptor}
+    
+\DTLnewdb{interfacesDeUsuario}
+\DTLifdbempty{interfacesDeUsuario}{
+	\DTLaddcolumn{interfacesDeUsuario}{id}
+    \DTLaddcolumn{interfacesDeUsuario}{type}
+    \DTLaddcolumn{interfacesDeUsuario}{name}
+    \DTLaddcolumn{interfacesDeUsuario}{elementdescriptor}
+}{
+	%Nada
+}
+
+\DTLloaddb{interfacesDeUsuarioConsulta}{db/DBIU.csv}
+	\DTLaddcolumn{interfacesDeUsuarioConsulta}{id}
+	\DTLaddcolumn{interfacesDeUsuarioConsulta}{type}
+	\DTLaddcolumn{interfacesDeUsuarioConsulta}{name}
+    \DTLaddcolumn{interfacesDeUsuarioConsulta}{elementdescriptor}
+
+
+\DTLnewdb{mensajes}
+\DTLifdbempty{mensajes}{
+	\DTLaddcolumn{mensajes}{id}
+    \DTLaddcolumn{mensajes}{type}
+    \DTLaddcolumn{mensajes}{name}
+    \DTLaddcolumn{mensajes}{elementdescriptor}
+}{
+	%Nada
+}
+
+\DTLloaddb{mensajesConsulta}{db/DBMSG.csv}
+	\DTLaddcolumn{mensajesConsulta}{id}
+	\DTLaddcolumn{mensajesConsulta}{type}
+	\DTLaddcolumn{mensajesConsulta}{name}
+    \DTLaddcolumn{mensajesConsulta}{elementdescriptor}
+    
+\DTLnewdb{entidades}
+\DTLifdbempty{entidades}{
+	\DTLaddcolumn{entidades}{id}
+    \DTLaddcolumn{entidades}{type}
+    \DTLaddcolumn{entidades}{name}
+    \DTLaddcolumn{entidades}{elementdescriptor}
+}{
+	%Nada
+}
+
+\DTLloaddb{entidadesConsulta}{db/DBEntities.csv}
+	\DTLaddcolumn{entidadesConsulta}{id}
+	\DTLaddcolumn{entidadesConsulta}{type}
+	\DTLaddcolumn{entidadesConsulta}{name}
+    \DTLaddcolumn{entidadesConsulta}{elementdescriptor}
+   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Agregar un elemento
+%Comando:\addElement
+%Argumentos:
+%	1 ID
+% 	2 Artefacto
+%	3 Nombre
+%	4 ElementDescriptor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\addElement}[6]{
+	\dtlexpandnewvalue
+	\typeout{Se agrega #1-#3 en la base de #2 con selector #4}%
+	\IfStrEq{#2}{Requerimiento}{%
+		%Agregando a la base de datos de Requerimientos
+		\DTLnewrow{requerimientos}%
+		\DTLnewdbentry{requerimientos}{id}{{#1}}%
+		\DTLnewdbentry{requerimientos}{type}{{#2}}%
+		\DTLnewdbentry{requerimientos}{name}{{#3}}%
+		\DTLnewdbentry{requerimientos}{elementdescriptor}{{#4}}%
+	}{\IfStrEq{#2}{Stakeholder}{%
+		\DTLnewrow{stakeholders}%
+		\DTLnewdbentry{stakeholders}{id}{{#1}}%
+		\DTLnewdbentry{stakeholders}{type}{{#2}}%
+		\DTLnewdbentry{stakeholders}{name}{{#3}}%
+	}{\IfStrEq{#2}{Term}{%
+		\DTLnewrow{terminos}%
+		\DTLnewdbentry{terminos}{id}{{#1}}%
+		\DTLnewdbentry{terminos}{type}{{#2}}%
+		\DTLnewdbentry{terminos}{name}{{#3}}%
+	}{\IfStrEq{#2}{Regla de Negocio}{%
+		\DTLnewrow{reglasDeNegocio}%
+		\DTLnewdbentry{reglasDeNegocio}{id}{#1}%
+		\DTLnewdbentry{reglasDeNegocio}{type}{#2}%
+		\DTLnewdbentry{reglasDeNegocio}{name}{#3}%
+	}{\IfStrEq{#2}{Maquina}{%
+		\DTLnewrow{maquinas}%
+		\DTLnewdbentry{maquinas}{id}{#1}%
+		\DTLnewdbentry{maquinas}{type}{#2}%
+		\DTLnewdbentry{maquinas}{name}{#3}%
+	}{\IfStrEq{#2}{CU}{%
+		\DTLnewrow{casosDeUso}%
+		\DTLnewdbentry{casosDeUso}{id}{#1}%
+		\DTLnewdbentry{casosDeUso}{type}{#2}%
+		\DTLnewdbentry{casosDeUso}{name}{#3}%
+	}{\IfStrEq{#2}{IU}{%
+		\DTLnewrow{interfacesDeUsuario}%
+		\DTLnewdbentry{interfacesDeUsuario}{id}{#1}%
+		\DTLnewdbentry{interfacesDeUsuario}{type}{#2}%
+		\DTLnewdbentry{interfacesDeUsuario}{name}{#3}%
+	}{\IfStrEq{#2}{Mensaje}{%
+		\DTLnewrow{mensajes}%
+		\DTLnewdbentry{mensajes}{id}{#1}%
+		\DTLnewdbentry{mensajes}{type}{#2}%
+		\DTLnewdbentry{mensajes}{name}{#3}%
+	}{\IfStrEq{#2}{Entidad}{%
+		\DTLnewrow{entidades}%
+		\DTLnewdbentry{entidades}{id}{#1}%
+		\DTLnewdbentry{entidades}{type}{#2}%
+		\DTLnewdbentry{entidades}{name}{#3}%
+		}{\IfStrEq{#2}{Atributo}{%
+			\DTLnewrow{entidades}%
+			\DTLnewdbentry{entidades}{id}{#1}%
+			\DTLnewdbentry{entidades}{type}{#2}%
+			\DTLnewdbentry{entidades}{name}{#3}%
+			}{%Aqui se ponen más condiciones
+			}}}}}}}}}}	
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Obtener el elemento
+%Comando:\getElement
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\getElement}[2][]{
+
+}
+
+\newcommand{\getElementById}[2][]{%
+	\IfStrEq{#1}{}{}{%
+		\IfStrEq{#1}{Requerimiento}{%
+			\DTLgetvalueforkey{\varRefReq}{name}{requerimientosConsulta}{id}{#2}%
+			\DTLifnull{\varRefReq}{{\color{red}#2(broken)}}{%
+				\hyperlink{#2}{#2~{}-\varRefReq}%
+			}%
+		}{%
+			\IfStrEq{#1}{Stakeholder}{%
+				\DTLgetvalueforkey{\varRefSt}{name}{stakeholdersConsulta}{id}{#2}%
+				\DTLifnull{\varRefSt}{{\color{red}#2(broken)}}{%
+					\hyperlink{#2}{\varRefSt}%
+				}%
+			}{\IfStrEq{#1}{Term}{%
+				\DTLgetvalueforkey{\varRefTerm}{name}{terminosConsulta}{id}{#2}%
+				\DTLifnull{\varRefTerm}{{\color{red}#2(broken)}}{%
+					\hyperlink{#2}{\varRefTerm}%
+				}%
+			}{\IfStrEq{#1}{BR}{%
+				\DTLgetvalueforkey{\varRefTerm}{name}{reglasDeNegocioConsulta}{id}{#2}%
+				\DTLifnull{\varRefTerm}{{\color{red}#2(broken)}}{%
+					\hyperlink{#2}{#2-\varRefTerm}%
+				}%
+				}{\IfStrEq{#1}{CU}{%
+					\DTLgetvalueforkey{\varRefTerm}{name}{casosDeUsoConsulta}{id}{#2}%
+					\DTLifnull{\varRefTerm}{{\color{red}#2(broken)}}{%
+					\hyperlink{#2}{#2-\varRefTerm}%
+					}%
+				}{\IfStrEq{#1}{IU}{%
+					\DTLgetvalueforkey{\varRefTerm}{name}{interfacesDeUsuarioConsulta}{id}{#2}%
+					\DTLifnull{\varRefTerm}{{\color{red}#2(broken)}}{%
+					\hyperlink{#2}{#2-\varRefTerm}%
+					}%
+					}{\IfStrEq{#1}{MSG}{%
+						\DTLgetvalueforkey{\varRefTerm}{name}{mensajesConsulta}{id}{#2}%
+						\DTLifnull{\varRefTerm}{{\color{red}#2(broken)}}{%
+						\hyperlink{#2}{#2-\varRefTerm}%
+						}%
+						}{\IfStrEq{#1}{Entidad}{%
+							\DTLgetvalueforkey{\varRefTerm}{name}{entidadesConsulta}{id}{#2}%
+							\DTLifnull{\varRefTerm}{{\color{red}#2(broken)}}{%
+							\hyperlink{#2}{\varRefTerm}%
+%						}{\IfStrEq{#1}{MAQ}{%
+%					\DTLgetvalueforkey{\varRefTerm}{name}{maquinasConsulta}{id}{#2}%
+%					\DTLifnull{\varRefTerm}{{\color{red}#2(broken)}}{%
+%					\hyperlink{#2}{#2-\varRefTerm}%
+%					}%
+					}{%Aqui van otras condiciones
+						}}}}}}}}}%
+}}%
+
+
+\newcommand{\saveData}{
+	\DTLsavedb{requerimientos}{db/DBRequerimientos.csv}
+	\DTLsavedb{stakeholders}{db/DBStakeholders.csv}
+	\DTLsavedb{reglasDeNegocio}{db/DBBR.csv}
+	\DTLsavedb{casosDeUso}{db/DBCU.csv}
+	\DTLsavedb{interfacesDeUsuario}{db/DBIU.csv}
+%	\DTLsavedb{maquinasConsulta}{db/DBMaquinas.csv}
+	\DTLsavedb{mensajes}{db/DBMSG.csv}
+	\DTLsavedb{entidades}{db/DBEntities.csv}
+}

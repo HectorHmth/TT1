@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="LocalProductoActionBar">
+        <item name="theme">@style/ThemeOverlay.MaterialComponents.ActionBar</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back_black_24dp</item>
+        <item name="android:subtitle">Productos del Local</item>
+        <item name="android:title">%1$s</item>
+    </style>
+
+    <style name="PedidosActionBar">
+        <item name="theme">@style/ThemeOverlay.MaterialComponents.ActionBar</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back_black_24dp</item>
+        <item name="android:subtitle">Pedidos</item>
+        <item name="android:title">%1$s</item>
+    </style>
+
+    <style name="LocalDetailActionBar">
+        <item name="navigationIcon">@drawable/ic_arrow_back_black_24dp</item>
+        <item name="android:title">%1$s</item>
+    </style>
+
+</resources>

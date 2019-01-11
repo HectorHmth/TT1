@@ -1,0 +1,78 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMAU01W}{Iniciar Sesión}{Cuando una \getElementById[Stakeholder]{Persona} va a realizar algunas operaciones en el sistema así como acceder a las funcionalidades que le corresponden a su rol va a ingresar su nombre de usuario y su contraseña en un formulario el cual debe validar que la cuenta exista, que la contraseña ingresada sea la correcta, que no este bloqueada y en caso de exceder el máximo número de intentos proceder a modificar el estado de la cuenta. Si el sistema concluyó las validaciones de forma exitosa entonces deberá determinar los recursos a los que la persona tiene acceso y mostrar su pantalla de bienvenida correspondiente como se indica a continuación:
+	\begin{longtable}{|l|l|}
+		\hline
+		\rowcolor{secundario}
+		\bf \color{white}Rol & \color{white}\bf Pantalla de Bienvenida\\
+		\hline
+		\getElementById[Stakeholder]{Administrador} & \getElementById[IU]{IUMAU01.2W}\\
+		\hline
+		\getElementById[Stakeholder]{Jefe} & \getElementById[IU]{IUMAU01.3W}\\
+		\hline
+		\getElementById[Stakeholder]{Cajero} & \getElementById[IU]{IUMAU01.4W}\\
+		\hline
+		\getElementById[Stakeholder]{Cocinero} & \getElementById[IU]{IUMAU01.5W}\\
+		\hline
+		\getElementById[Stakeholder]{Responsable} & \getElementById[IU]{IUMAU01.6W}\\
+		\hline
+	\end{longtable}
+}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Francisco Isidoro Mera Torres}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Persona}}
+	\UCitem{Propósito}{Definir un mecanismo mediante el cual las personas que están registradas y van a utilizar el sistema se identifiquen y tengan acceso a las funcionalidades que les ofrece el sistema con base en el o los roles asociados a su cuenta.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{Cuenta.nombreDeUsuario}.
+		\Titem \getElementById[Entidad]{Cuenta.contrasena}.
+		\Titem \getElementById[Entidad]{Acceso.numeroIntentos}.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem \getElementById[MSG]{MSG03}
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem La persona que va a ingresar al sistema debe estar registrada en el sistema.
+		\Titem No debe existir una sesión activa.
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem La persona tiene acceso a la página de bienvenida que le corresponde a su 
+		\Titem La persona tiene
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR]{BR-MAU01}
+		\end{Titemize}
+	}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Los campos marcados en el formulario como obligatorios están vacíos}{se muestra el mensaje \getElementById[MSG]{MSG02}}
+		\end{Titemize}
+	}
+	\UCitem{Viene de}{No aplica.}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Ingresa en el navegador de su preferencia la ruta \textit{''http://coffeeapp.com/''}.
+		\UCpaso Verifica que no haya una sesión activa para el actor con base en la regla de negocio \getElementById[BR]{BR-MAU002}.\refTray{A}
+		\UCpaso Solicita al actor ingresar los datos de entrada como se muestra en la pantalla \getElementById[IU]{IUMAU01W}.
+		\UCpaso[\UCactor] Ingresa los datos de entrada en la pantalla \getElementById[IU]{IUMAU01W}.
+		\UCpaso[\UCactor] Indica que ha concluido de ingresar los datos de entrada en la pantalla \getElementById[IU]{IUMAU01W} presionando el botón \IUbutton{Iniciar Sesión}.
+		\UCpaso Verifica que los campos marcados como obligatorios no estén vacíos con base en la regla de negocio \getElementById[BR]{BR001}.\refTray{B}
+		\UCpaso Verifica que exista una cuenta asociada al actor con el \getElementById[Entidad]{Cuenta.nombreUsuario} y obtiene la información de la cuenta.\refTray{C}
+		\UCpaso Verifica que la contraseña ingresada con por el actor corresponda con la \getElementById[Entidad]{Cuenta.contrasena} de la cuenta.\refTray{D}
+		\UCpaso Verifica que la cuenta del actor no tenga asociado el estado \textbf{Bloqueado} con base en la máquina de estados \getElementById[MAQ]{MAQ-MAU01}.\refTray{E}
+		\UCpaso Redirecciona al actor a su página de bienvenida que le corresponda a su rol.	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Ya existe una sesión activa y asociada con el actor.}
+		\UCpaso fads
+	
+	\end{UCtrayectoriaA}
+	

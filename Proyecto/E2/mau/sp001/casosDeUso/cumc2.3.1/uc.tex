@@ -1,0 +1,71 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC2.3.1}{Consultar Pedidos Entregados}{
+Cuando un \getElementById[Stakeholder]{Cliente} quiere consultar su historial de pedidos entregados, deberá dar clic en el botón \textbf{Pedidos} de la pantalla %Referencia al mockup de la pantalla:
+\textbf{Cuenta}, se mostrará la pantalla %Referencia al mockup de la pantalla:
+\textbf{Historial de Pedidos} en el cual se mostrarán todos los pedidos que han sido entregados al cliente, se podrá visualizar la información de los pedidos como: \textbf{Fecha de Entrega} y \textbf{Local} a donde se realizó el pedido, al presionar un pedido se desplegará el detalle del pedido, mostrando información como lo son: \textbf{Productos} y \textbf{Precios}. Esto con la finalidad de que el usuario pueda conusltar información de pedidos previos em caso de que lo requiera.}
+
+	%DESCRIPCIÓN DEL CASO DE USO
+		\UCitem{Versión}{0.1}
+		\UCitem{Elaboró}{López Ayala Eric Alejandro}
+		\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+		\UCitem{Prioridad}{Media}
+		\UCitem{Complejidad}{Baja}
+		\UCitem{Volatilidad}{Baja}
+		\UCitem{Madurez}{Media}
+		\UCsection{Atributos}
+		\UCitem{Actor}{\getElementById[Stakeholder]{Persona}}
+		\UCitem{Propósito}{Definir un mecanismo mediante el cual un \getElementById[Stakeholder]{Cliente} pueda consultar el historial de sus pedidos entregados, así como consultar información a detalle de cada pedido realizado.}
+		\UCitem{Entradas}{
+			\begin{Titemize}
+				\Titem \getElementById[Entidad]{Cliente}
+			\end{Titemize}
+		}
+		\UCitem{Salidas}{
+			\begin{Titemize}
+				\Titem Ninguna
+			\end{Titemize}
+		}
+		\UCitem{Precondiciones}{
+			\begin{Titemize}
+				\Titem Debe de haber por lo menos un pedido registrado.
+			\end{Titemize}
+		}	
+		\UCitem{Postcondiciones}{
+			\begin{Titemize}
+				\Titem Ninguno.
+			\end{Titemize}
+		}
+		\UCitem{Reglas de Negocio}{
+			\begin{Titemize}
+				\Titem
+			\end{Titemize}
+		}
+	%Aqui me siento que faltan mas mensajes...
+%	\UCitem{Errores}{
+%		\begin{Titemize}
+%			\Iitem \UCerr{Uno}{Los campos marcados en el formulario como obligatorios están vacios}{se muestra el mensaje \getElementById[MSG]{MSG2}}
+%			
+%			\Titem \UCerr{Dos}{Alguno de los campos dentro del formulario no cumple con el formato establecido dentro de las reglas de negocio correspondiente a dicho campo}{se muestra el mensaje \getElementById[MSG]{MSG6}}
+%		\end{Titemize}
+%	}
+		\UCitem{Viene de}{No aplica.}
+\end{UseCase}
+		
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Ingresa en el navegador de su preferencia la ruta \textit{''http://coffeeapp.com/''}.
+		\UCpaso Verifica que no haya una sesión activa para el actor con base en la regla de negocio \getElementById[BR]{BR-MAU002}.\refTray{A}
+		\UCpaso Solicita al actor ingresar los datos de entrada como se muestra en la pantalla \getElementById[IU]{IUMAU01W}.
+		\UCpaso[\UCactor] Ingresa los datos de entrada en la pantalla \getElementById[IU]{IUMAU01W}.
+		\UCpaso[\UCactor] Indica que ha concluido de ingresar los datos de entrada en la pantalla \getElementById[IU]{IUMAU01W} presionando el botón \IUbutton{Iniciar Sesión}.
+		\UCpaso Verifica que los campos marcados como obligatorios no estén vacíos con base en la regla de negocio \getElementById[BR]{BR001}.\refTray{B}
+		\UCpaso Verifica que exista una cuenta asociada al actor con el \getElementById[Entidad]{Cuenta.nombreUsuario} y obtiene la información de la cuenta.\refTray{C}
+		\UCpaso Verifica que la contraseña ingresada con por el actor corresponda con la \getElementById[Entidad]{Cuenta.contrasena} de la cuenta.\refTray{D}
+		\UCpaso Verifica que la cuenta del actor no tenga asociado el estado \textbf{Bloqueado} con base en la máquina de estados \getElementById[MAQ]{MAQ-MAU01}.\refTray{E}
+		\UCpaso Redirecciona al actor a su página de bienvenida que le corresponda a su rol.	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Ya existe una sesión activa y asociada con el actor.}
+		\UCpaso fads
+	
+	\end{UCtrayectoriaA}

@@ -1,0 +1,16 @@
+%!TEX root = ../../prueba.tex
+\begin{IU}{IUMC3.2}{Consultar Lista de Productos}{En está pantalla el \getElementById[Stakeholder]{Cliente} podrá consultar los productos que se ofertan en un local para agregarlos a su carrito de compras para crear una nueva orden. Como se puede observar los productos de un local se encuentran divididos en :\begin{Citemize}
+		\item Promociones que el Local ha registrado.
+		\item Productos a los que no se les aplica una promoción.
+		\item Productos que conforman un menú de comida corrida.
+	\end{Citemize}}{casosDeUso/cumc3.2/IUMC32}
+	\item[Acciones:]\hspace{1pt}
+		\begin{Citemize}
+		\item Al seleccionar un producto se desplegará una pantalla con su información dándole la posibilidad al cliente de agregar el producto al carrito de compras además de agregar una nota que pueda ser leída por el cocinero que vaya a preparar el producto. Este comportamiento está descrito en el caso de uso \getElementById[CU]{CUMC3.2.1}.
+		\item \IUbutton{Promociones} Al presionar este botón se desplegará una lista con los productos a los que se les aplica una promoción(es decir una reducción de su precio normal).
+		\item \IUbutton{Productos} Al presionar este botón se desplegará una lista con los productos que no son aplicables a una promoción.
+		\item \IUbutton{Menú del día} Al presionar este botón se desplegará el producto que él \getElementById[Stakeholder]{ResponsableDeLocal} indicó como menú del día.
+		\item \backIcon{} Al presionar este botón se redirigira la pantalla \getElementById[IU]{IUMC3}
+		\item \IUbutton{Ver Local} Al presionar este botón se desplegará la información del Local del que se esta consultando la lista de productos en la pantalla \getElementById[IU]{IUMC3.1}
+	\end{Citemize}
+\end{IU}

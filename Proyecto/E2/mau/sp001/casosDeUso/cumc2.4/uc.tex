@@ -1,0 +1,83 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC2.4}{Configurar Cuenta}{
+Cuando una \getElementById[Stakeholder]{Persona} quiere configurar su cuenta, deberá dar clic en el botón \textbf{Configurar Cuenta} de la pantalla %Referencia al mockup de la pantalla: 
+\textbf{Cuenta}, se mostrará la pantalla %Referencia al mockup de la pantalla: 
+\textbf{Editar Cuenta} en la cual podrá editar tanto sus datos personales como lo son: \textbf{nombre} y \textbf{apellidos}, además podrá editar la \textbf{contraseña} de su cuenta de usuario, esto provee de un mecanismo al usuario para poder mantener actualizada su información y modificarla cuando lo desee.\\}
+
+	%DESCRIPCIÓN DEL CASO DE USO
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{López Ayala Eric Alejandro}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Baja}
+	\UCitem{Complejidad}{Baja}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Persona}}
+	\UCitem{Propósito}{Definir un mecanismo mediante el cual una \getElementById[Stakeholder]{Persona} pueda modificar y mantener actualizada la información de su cuenta cuando así lo desee.}
+	\UCitem{Entradas}{
+		\begin{Titemize}
+			%DATOS PERSONALES DE LA PERSONA
+			\Titem \getElementById[Entidad]{Persona.nombre}.
+			\Titem \getElementById[Entidad]{Persona.primerApellido}.
+			\Titem \getElementById[Entidad]{Persona.segundoApellido}. 
+
+			%DATOS DE CUENTA
+			\Titem \getElementById[Entidad]{Cuenta.contrasena}.
+		\end{Titemize}
+
+	}
+	\UCitem{Salidas}{
+		\begin{Titemize}
+			%MSG01: Operación realizada exitosamente - Mensaje genérico
+			%En caso de requerir un mensaje más personalizado agregar el mensaje...
+			\Titem \getElementById[MSG]{MSG01}
+		\end{Titemize}
+	}
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			\Titem La persona debe de tener una cuenta de usuario registrada en el sistema.
+		\end{Titemize}
+	}	
+	\UCitem{Postcondiciones}{
+		\begin{Titemize}
+			\Titem La persona tendrá sus datos personales y sus datos de cuenta actualizados.
+		\end{Titemize}
+	}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem
+			%Regla de negocio: Contraseña válida
+			%\Titem \getElementById[BR]{BR-MAU003}
+		\end{Titemize}
+	}
+	%Aqui me siento que faltan mas mensajes...
+%	\UCitem{Errores}{
+%		\begin{Titemize}
+%			\Iitem \UCerr{Uno}{Los campos marcados en el formulario como obligatorios están vacios}{se muestra el mensaje \getElementById[MSG]{MSG2}}
+%			
+%			\Titem \UCerr{Dos}{Alguno de los campos dentro del formulario no cumple con el formato establecido dentro de las reglas de negocio correspondiente a dicho campo}{se muestra el mensaje \getElementById[MSG]{MSG6}}
+%		\end{Titemize}
+%	}
+	\UCitem{Viene de}{No aplica.}
+\end{UseCase}
+		
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Ingresa en el navegador de su preferencia la ruta \textit{''http://coffeeapp.com/''}.
+		\UCpaso Verifica que no haya una sesión activa para el actor con base en la regla de negocio \getElementById[BR]{BR-MAU002}.\refTray{A}
+		\UCpaso Solicita al actor ingresar los datos de entrada como se muestra en la pantalla \getElementById[IU]{IUMAU01W}.
+		\UCpaso[\UCactor] Ingresa los datos de entrada en la pantalla \getElementById[IU]{IUMAU01W}.
+		\UCpaso[\UCactor] Indica que ha concluido de ingresar los datos de entrada en la pantalla \getElementById[IU]{IUMAU01W} presionando el botón \IUbutton{Iniciar Sesión}.
+		\UCpaso Verifica que los campos marcados como obligatorios no estén vacíos con base en la regla de negocio \getElementById[BR]{BR001}.\refTray{B}
+		\UCpaso Verifica que exista una cuenta asociada al actor con el \getElementById[Entidad]{Cuenta.nombreUsuario} y obtiene la información de la cuenta.\refTray{C}
+		\UCpaso Verifica que la contraseña ingresada con por el actor corresponda con la \getElementById[Entidad]{Cuenta.contrasena} de la cuenta.\refTray{D}
+		\UCpaso Verifica que la cuenta del actor no tenga asociado el estado \textbf{Bloqueado} con base en la máquina de estados \getElementById[MAQ]{MAQ-MAU01}.\refTray{E}
+		\UCpaso Redirecciona al actor a su página de bienvenida que le corresponda a su rol.	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Ya existe una sesión activa y asociada con el actor.}
+		\UCpaso fads
+	
+	\end{UCtrayectoriaA}
+	

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="mx.ipn.escom.prueba.coffeeapp.viewmodel.CarritoViewModel"/>
+        <variable
+            name="handler"
+            type="mx.ipn.escom.prueba.coffeeapp.views.CarritoFragment"/>
+    </data>
+    <ScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".views.CarritoFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Carrito de Compras"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:padding="5dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.local.nombreLocal}"
+                android:padding="5dp"
+                android:textAlignment="center"
+                style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Horario de Atención"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:textAlignment="center"
+                    android:layout_gravity="start"
+                    style="@style/TextAppearance.AppCompat.Small"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:text="@{viewModel.local.horario}"/>
+            </LinearLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:strokeWidth="0.1dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:text="Tú pedido"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:id="@+id/pedidoTV"
+                        style="@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:padding="10dp"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:onClick="@{()->viewModel.displayPedido}"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/pedidoLL"
+                        android:visibility="gone">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ordenProductosSinConfirmarRV"
+                            />
+
+                        <ProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible"
+                            android:id="@+id/ordenProductosSinConfirmarPB"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:text="Total:"
+                                style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                style="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+                                android:text="@={viewModel.totalOrdenMutable}"/>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:strokeWidth="0.1dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="textStart"
+                        android:padding="10dp"
+                        style="@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:id="@+id/paraCuandoTV"
+                        android:text="¿Para cuando lo quieres?"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:onClick="@{()->viewModel.displayParaCuando()}"
+                        />
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:id="@+id/layoutButtonsParaCuando"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:id="@+id/radio_selection">
+
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="16dp"
+                                android:text="Lo antes posible"
+                                android:checked="true"
+                                android:id="@+id/loAntesRB"
+                                android:drawableStart="@drawable/ic_access_time_black_24dp"
+                                />
+
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="16dp"
+                                android:id="@+id/programarRB"
+                                android:drawableStart="@drawable/ic_date_range_black_24dp"
+                                android:text="Programar Pedido"/>
+                        </RadioGroup>
+
+                        <!--Se valida la hora en el onTimeChanged-->
+                        <TimePicker
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:id="@+id/timePicker"
+                            android:timePickerMode="clock"
+                            android:tooltipText="Recuerda que debes seleccionar una hora dentro del rango de horario de atencion del local"
+                            android:padding="16dp">
+                        </TimePicker>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:strokeWidth="0.1dp"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Elige una forma de pago"
+                        android:padding="10dp"
+                        android:id="@+id/pagoTV"
+                        android:onClick="@{()->viewModel.displayFormaPago()}"
+                        style="@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/pagosLL"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:id="@+id/typeFormaPagoIV"
+                                android:src="@drawable/ic_monetization_on_black_24dp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:text="@{viewModel.tipoFormaPago}"
+                                style="@style/Base.TextAppearance.AppCompat.Body1"/>
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_margin="10dp"
+                            android:text="Cambiar forma de pago"
+                            android:textAllCaps="false"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                android:text="Finalizar Compra"
+                android:id="@+id/finalizarCompraBtn"
+                app:icon="@drawable/ic_send_black_24dp"
+                app:iconGravity="textStart" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</layout>

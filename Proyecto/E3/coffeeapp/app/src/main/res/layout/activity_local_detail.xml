@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="mx.ipn.escom.prueba.coffeeapp.viewmodel.LocalDetailViewModel"/>
+        
+    </data>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.LocalDetailActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/LocalDetailActionBar"
+            android:id="@+id/localDetailToolbar"
+            app:title="Información del Local"
+            android:background="@color/colorPrimaryDark"
+            app:titleTextColor="@color/white" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            app:cardElevation="3dp"
+            app:strokeWidth="0.1dp"
+            app:cardCornerRadius="5dp"
+            android:elevation="100dp"
+
+            style="@style/Widget.MaterialComponents.CardView">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="16dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:src="@drawable/not_available"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_margin="10dp"
+                    android:textAlignment="textStart"
+                    android:text="@{viewModel.nombreLocal}"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:stepSize="0.25"
+                        android:clickable="false"
+                        android:numStars="5"
+                        android:isIndicator="true"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:rating="@{viewModel.nuRating}"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@{viewModel.nuRating.toString()}"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                    android:text="@{viewModel.estadoActualLocal}"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:text="@{viewModel.fullHorario}"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.direccion}"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    />
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:text="Ver en el Mapa"
+                    android:onClick="verEnElMapa"
+                    android:padding="16dp"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_margin="5dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</ScrollView>
+</layout>

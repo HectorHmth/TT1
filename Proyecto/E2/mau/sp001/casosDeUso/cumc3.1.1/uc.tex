@@ -1,0 +1,83 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC14M}{Calificar Cafetería}{}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Eliot Uriel Cedillo Vázquez}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Baja}
+	\UCitem{Complejidad}{Baja}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{}
+	\UCsection{Atributos}
+	\UCitem{Actor}{Cliente}
+	\UCitem{Propósito}{Valorar la satisfacción de atención y servicio de un local de alguna cafetería.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{local.nuRating}.
+	\end{Titemize }
+	\UCitem{Salidas}{Calificación final}
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			\Titem Se debe haber pedido almenos un pedido en la cafeteria.
+			\Titem Almenos un pedido del cliente que califica debe haber sido entregado.
+                    \end{Titemize}}	
+	\UCitem{Postcondiciones}{Se agregara la calificación a la calificación general de la cafetería}
+	\UCitem{Reglas de Negocio}{}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem No se pudo registrar la calificación.
+			\Titem No se pude califcar la cafeteria.
+		\end{Titemize}
+		
+	}
+	\UCitem{Viene de}{}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor]Buscara un local en la interfaz de usuario 13.\refTray{A}
+		\UCpaso[\UCactor]Presionara sobre el local que deseé.
+		\UCpaso Muestra la interfaz de usuario 15.
+		\UCpaso[\UCactor] Presiona sobre la calificación del local.
+		\UCpaso Comprueba si el cliente ah realizado un pedido en el local.\refTray{B}
+		\UCpaso Comprueba si almenos un pedido realizado por el cliente ah sido entregado.\refTray{C}
+		\UCpaso Muestra la interfaz de usuario ??.%Aquí no se si se mostrara otra interfaz de usuario o simplemente sera un pop-up para poner la calificación con las estrellitas
+		\UCpaso[\UCactor]Presiona el numero de estrellas que otorgara para calificar el local.
+		\UCpaso[\UCactor] Dara click en el boton \IUbutton{Aceptar}\refTray{D}
+		\UCpaso Guarda la calificación del local.
+		\UCpaso Promediara la calificación nueva con la calificación general del local.
+		\UCpaso Muestra el mensaje:"Calificación guardada con exito gracias por tu opinion :)".
+%El mensaje puede cambiar segun lo que sea mas conveniente
+		\UCpaso Muestra la interfaz de usuario 15.
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Entrega de un pedido activo realizado}
+		\UCpaso Comprueba el estado de un pedido.
+		\UCpaso Envía una notificación si el estado del pedido es igual a entregado.
+		\UCpaso[\UCactor]Presiona la notificación.
+		\UCpaso Muestra la Interfaz de usuario 15.%¿la interfaz de usuario sera generica nadamas cambiando el nombre del local o existira una interfaz de usuario diferentepara cada franquicia de cafeteria?
+		\UCpaso[\UCactor] Presiona sobre la calificación del local.
+		\UCpaso Muestra la interfaz de usuario ??.%Aquí no se si se mostrara otra interfaz de usuario o simplemente sera un pop-up para poner la calificación con las estrellitas
+		\UCpaso[\UCactor]Presiona el numero de estrellas que otorgara para calificar el local.
+		\UCpaso[\UCactor] Dara click en el boton \IUbutton{Aceptar}\refTray{D}
+		\UCpaso Guarda la calificación del local.
+		\UCpaso Promediara la calificación nueva con la calificación general del local.
+		\UCpaso Muestra el mensaje:"Calificación guardada con exito gracias por tu opinion :)".%El mensaje puede cambiar segun lo que sea mas conveniente
+		\UCpaso Muestra la interfaz de usuario 15.
+	\end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{B}{Nose han realizado pedidos en ese local}
+		\UCpaso Muestra el mensaje:"No se puede calificar: lo sentimos aun no haz realizado pedidos en este local :("
+		\UCpaso Muestrala interfaz de usuario 13.
+	\end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{C}{ningun pedido realizado en el local ah sido entregado}
+		\UCpaso Muestra el mensaje: "No se puede calificar: lo sentimos ninguno de tus pedidos ah sido entregado satisfactoriamente :("
+		\UCpaso Muestrala interfaz de usuario 13.
+	\end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{D}{Cancelación de calificación}
+		\UCpaso[\UCactor]Dara click en el boton \IUbutton{Cancelar}
+		\UCpaso No guardara la calificación.
+		\UCpaso Muestra la interfaz de usuario 15
+	\end{UCtrayectoriaA}

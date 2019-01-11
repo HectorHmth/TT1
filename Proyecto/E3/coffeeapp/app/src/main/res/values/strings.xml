@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Coffeeapp</string>
+    <string name="MSG1">Este campo no puede estar vacío</string>
+    <string name="MSG2">Conexión Inhabilitada</string>
+    <string name="MSG3">Usuario y/o Contraseña Incorrectos</string>
+    <string name="MSG4">El nombre de usuario que seleccionaste ya existe</string>
+    <string name="MSG5">Te registraste de forma exitosa</string>
+    <string name="MSG6">Falta llenar un campo</string>
+    <string name="MSG7">Cierre de sesión exitoso</string>
+    <string name="MSG8">El producto está agotado</string>
+    <string name="MSG9">El producto ya existe en tu orden activa</string>
+    <string name="MSG10">El producto no pudo ser agregado a tu orden</string>
+    <string name="MSG11">Producto agregado correctamente a tu orden</string>
+    <string name="MSG12">No existe una orden asociada</string>
+    <string name="MSG13">La orden debe tener al menos una instancia de este producto</string>
+    <string name="MSG14">Producto eliminado correctamente de la orden</string>
+    <string name="MSG15">El producto no pudo ser eliminado de la orden</string>
+    <string name="MSG16">Error al enviar la orden</string>
+    <string name="MSG17">Orden enviada</string>
+    <string name="MSG18">Orden vacía</string>
+    <string name="MSG19">No se encontró una cuenta</string>
+    <string name="CONFIRMAR_PEDIDO_TL">Confirmar Pedido</string>
+    <string name="CONFIRMAR_PEDIDO_MSG">Al aceptar, el pedido será procesado y no podras cancelarlo.</string>
+    <string name="title_activity_principal">Principal</string>
+    <string name="title_locales">Locales</string>
+    <string name="title_ordenes">Órdenes</string>
+    <string name="title_carrito">Carrito</string>
+    <string name="title_cuenta">Cuenta</string>
+
+    <string name="hello_blank_fragment">Hola</string>
+</resources>

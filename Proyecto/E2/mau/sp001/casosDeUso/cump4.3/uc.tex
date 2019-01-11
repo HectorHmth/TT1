@@ -1,0 +1,36 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMP4.3}{Cambiar Forma de Pago}{Cuando el \getElementById[Stakeholder]{Cliente} realize un pedido a un local y quiere pagar ya sea via Pay Pal, Tarjeta de Credito o en efectivo, el sistema le dara la opcion de poder cambiar su forma de pago a la manera que el prefiera.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Fernando Alonso Martínez Calderón}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{FormaPago.tipo}.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{FormaPAgo
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem El cliente debe haber iniciado sesión en la aplicación.
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem El cliente podrá cambiar su forma de pago.
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{No aplica}
+	\UCitem{Errores}{\begin{Titemize}
+		
+	\end{Titemize}}
+	\UCitem{Viene de}{\getElementById[CU]{CUMAU1}}
+	\end{UseCase}
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Indica que va a realizar un cambio en su forma de pago presionando el icono \moneyIcon{money} como se muestra en la pantalla \getElementById[IU]{UIMC2}.
+		\UCpaso
+	\end{UCtrayectoria}

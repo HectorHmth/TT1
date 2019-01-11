@@ -1,0 +1,51 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC2}{Administrar Cuenta}{Cuando el \getElementById[Stakeholder]{Cliente} quiera administrar su cuenta, la aplicación le mostrara la opcion de poder visualizar sus datos personales y de la cuenta, para percatarse que su informacion es correcta o por algun motivo quiere hacer una configuración.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Fernando Alonso Martínez Calderón}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Baja}
+	\UCitem{Complejidad}{Baja}
+	\UCitem{Volatilidad}{Media}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{Tener la opcion de visualizar los datos registrados en la cuenta de usuario.}
+	\UCitem{Entradas}{\begin{Titemize}
+			\Titem \getElementById[Entidad]{Persona.nombre}.
+			\Titem \getElementById[Entidad]{Persona.primerApellido}.
+			\Titem \getElementById[Entidad]{Persona.segundoApellido}.
+			\Titem \getElementById[Entidad]{Cuenta.correoElectronico}.
+			\Titem \getElementById[Entidad]{Cuenta.nombreDeUsuario}.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+			\Titem \getElementById[Entidad]{Persona.nombre}.
+			\Titem \getElementById[Entidad]{Persona.primerApellido}.
+			\Titem \getElementById[Entidad]{Persona.segundoApellido}.
+			\Titem \getElementById[Entidad]{Cuenta.correoElectronico}.
+			\Titem \getElementById[Entidad]{Cuenta.nombreDeUsuario}.
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem El cliente debe de ser una persona registrada.		
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		Ninguna
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			Ninguna
+		\end{Titemize}
+	}
+	\UCitem{Errores}{\begin{Titemize}
+		Ninguno
+	\end{Titemize}}
+	\UCitem{Viene de}{\getElementById[IU]{MN01A}}
+	\end{UseCase}
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Presiona la opcion \gearIcon que se muestra en la pantalla \getElementById[IU]{UIMC2}.
+		\UCpaso Obtiene la imagen ingresada por el cliente.
+		\UCpaso Obtiene el nombre, primer apellido, segundo apellido y correo electronico del cliente, registrados en el sistema.
+		\UCpaso Obtiene el nombre de usuario, registrado en el sistema.
+
+	\end{UCtrayectoria}

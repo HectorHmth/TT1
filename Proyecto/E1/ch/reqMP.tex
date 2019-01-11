@@ -1,0 +1,51 @@
+%!TEX root = ../prueba.tex
+\begin{ReqSpec}
+	\Req{REQMP01}{Agregar Nuevo Establecimiento, Editar Información de Establecimiento y Eliminar Establecimiento}{Proveedor de Servicio}{Funcional}{Como proveedor del servicio de cafetería requiero de un mecanismo que me permita agregar la información de mi establecimiento: nombre, descripción, ubicación geográfica, escuelas más cercanas y especialidades, también se requiere de un mecanismo que me permita actualizar o editar la información previamente mencionada o eliminar la información de mi establecimiento para que ya no aparezca en la lista de establecimientos.}{Alta}
+	
+	\Req{REQMP02}{Agregar Información de Proveedor, Editar Información de Proveedor y Eliminar proveedor}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita tener un control de las empresas a las que se les pide generalmente productos, los datos que se deberán registrar de los proveedores son: nombre de la empresa, lista de productos que surte, teléfono de contacto y correo electrónico. Así mismo requiero de un mecanismo que me permita actualizar los datos previamente enunciados y de un mecanismo que me permita eliminar la información de un proveedor.}{Baja}
+	
+	\Req{REQMP03}{Agregar Producto a Inventario, Editar Información del Producto y Eliminar Producto de Inventario}{Proveedor de Servicio}{Funcional}{Como proveedor del servicio requiero de un mecanismo que me permita agregar la siguiente información de nuevos productos adquiridos:nombre, descripción, clasificación del producto, imagen, precio de venta, precio de adquisición. Así mismo, requiero de un mecanismo que me permita actualizar la información de un producto de mi inventario o eliminarlo en caso de haber un registro erróneo en la aplicación.}{Alta}
+	
+	\Req{REQMP04}{Registrar entrada de productos a la cafetería}{Proveedor de Servicio}{Funcional}{Como proveedor del servicio requiero de un mecanismo que me permita indicar cuando un pedido hecho a un proveedor llega a la cafetería para que esos productos pasen a formar parte de lo que se puede vender en el día. La información que requiero que se registre es: nombre de la persona que recibe, hora de entrada de los productos, la lista de productos y la cantidad de los productos en unidades, estado general del pedido y el estado particular de los productos.}{Alta}
+	
+	\Req{REQMP09}{Actualizar existencia de producto}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que por cada producto que sea vendido se actualice su existencia dentro de la cafetería con el fin de tener un control de los productos que todavía pueden ser vendidos.}{Alta}
+		%Cambia el estado 
+			%Stock > 10
+			%A punto de agotarse 0 < p < 10
+			%Agotado = 0
+			
+	\Req{REQMP05}{Agregar paquete, Editar Paquete y Eliminar Paquete}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita armar paquetes para que los clientes compren de 3 a 5 productos con una reducción del costo configurable de entre 5\% y 10\% sobre el costo total de los productos que conforman el producto además de poder darle un nombre, descripción e imagen. También requiero de un mecanismo que me permita actualizar los productos que conforman un paquete, su precio, nombre, descripción e imagen.}{Alta}
+	%Paquete 1:
+		%Cafe
+		%Torta
+		%Gelatina
+		
+	\Req{REQMP06}{Consultar lista de pedidos}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita consultar los pedidos de un establecimiento que están confirmados y en espera para seleccionar aquellos pedidos voy a cocinar o que estoy a punto de acabar para que el cliente pase por el.}{Alta}
+	
+	\Req{REQMP07}{Consultar pedido}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita seleccionar un pedido y consultar las especificaciones del cliente.}{Alta}
+	
+	
+	\Req{REQMP08}{Actualizar estado del pedido}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que:
+		\begin{Citemize}
+			\item Permita al cliente indicar que confirma su pedido, que cancela su pedido, que ha ido ha la caja y pagado su pedido.
+			\item Me permita indicar que estoy preparando un pedido o que estoy a punto de terminar su preparación o me permita indicar cuando un pedido puede ser recogido por otro cliente cuando el que lo solicitó tardo más de 10 minutos en recogerlo.
+		\end{Citemize}}{Alta}
+		%Actualizar
+			%Por confirmar
+			%En espera
+			%En preparación
+			%A punto de terminar
+			%Recogido y pagado
+			%Cancelado
+			%En espera de nuevo cliente
+			
+	\Req{REQMP10}{Reporte de la Experiencia del Cliente}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita consultar la experiencia promedio de los clientes que visitan el establecimiento.}{Baja}
+	
+	\Req{REQMP11}{Agregar promoción, editar promoción, guardar promoción y eliminar promoción}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita registrar promociones en la aplicación con los siguientes datos: nombre, periodo de vigencia, productos que entran en la promoción y criterios que los clientes deben cumplir para entrar en la promoción. Así mismo requiero de un mecanismo que me permita modificar los datos previamente descritos. También se requiere de un mecanismo que me permita almacenar los datos relacionados a una promoción para posteriormente volver a utilizarla, así como también un mecanismo que me permita eliminar los datos referentes a una promoción siempre y cuando no haya ventas ya realizadas con la promoción.}{Media}
+	
+	\Req{REQMP12}{Reporte promedio de Entradas/Salidas}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita conocer cuantos productos entran a la cafetería por medio de proveedores y cuantos salen por pedidos o ventas en caja. El rango del tiempo de este mecanismo debe ser de un mes a un año.}{Baja}
+	
+	\Req{REQMP13}{Reporte de productos más consumidos}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permite conocer cuales son los productos que más se venden.}{Baja}
+	
+	\Req{REQMP15}{Venta en Caja}{Proveedor de Servicio}{Funcional}{Como proveedor de servicio requiero de un mecanismo que me permita surtir pedidos de clientes que vienen directamente al establecimiento.}{Alta}
+\end{ReqSpec}

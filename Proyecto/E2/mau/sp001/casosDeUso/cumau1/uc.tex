@@ -1,0 +1,123 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMAU1}{Iniciar Sesión}{
+	Permite a una \getElementById[Stakeholder]{Persona} iniciar sesión en la aplicación del sistema "Coffee App" con el fin de realizar algunas operaciones inherentes al sistema y acceder a las funcionalidades correspondientes a su rol. \\
+	Debe considerarse que la \getElementById[Stakeholder]{Persona} puede realizar un inicio de sesión de múltiples formas, de forma tradicional se requiere que ingrese dentro del formulario su \textbf{Nombre de Usuario} y su \textbf{Contraseña}, otra alternativa para iniciar sesión en la aplicación es mediante \textbf{Facebook} o \textbf{Gmail}, o en caso de no querer registrarse en la aplicación podrá ingresar al sistema pero 
+	%el sistema validará que la cuenta exista, que el nombre de usuario y contraseña sean correctos que no este bloqueada y en caso de exceder el máximo número de intentos proceder a modificar el estado de la cuenta. Otra alternativa para que la \getElementById{Persona} pueda iniciar sesión es mediante sus redes sociales, en las cuales únicamente le pedirán \textbf{Confirmación} para realizar está operación, por último el usuario podrá hacer uso de algunas funcionalidades de la aplicación sin la necesidad de registrarse.\\
+}
+	%DESCRIPCIÓN DEL CASO DE USO
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Eric Alejandro López Ayala}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Persona}}
+	\UCitem{Propósito}{Definir un mecanismo mediante el cual las personas puedan identificarse e ingresar al sistema.}
+	\UCitem{Entradas}{
+		\begin{Titemize}
+			%DATOS DE CUENTA
+			\Titem \getElementById[Entidad]{Cuenta.correoElectronico}
+			\Titem \getElementById[Entidad]{Cuenta.nombreDeUsuario}.
+			\Titem \getElementById[Entidad]{Cuenta.contrasena}.
+		\end{Titemize}
+	}
+	\UCitem{Salidas}{
+		\begin{Titemize}
+			\Titem Ninguna
+		\end{Titemize}
+	}
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			%PRECONDICIONES
+			\Titem En el caso de que el usuario decida iniciar sesión con alguna de las dos redes sociales (Facebook o Gmail), deberá tener una cuenta registrada en estas redes sociales.
+		\end{Titemize}
+	}	
+	\UCitem{Postcondiciones}{Se generará una sesión activa para el usuario.}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR]{BR-MAU001}
+		\end{Titemize}
+	}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{El actor no ingresó un dato obligatorio}{Muestra el mensaje {MSG5} en la pantalla \getElementById[IU]{IUMAU01W}, vuelve al paso 4 de la \refTray{Principal}.}
+			
+			\Titem \UCerr{Dos}{El nombre del usuario ingresado no posee una cuenta asociada}{Muestra el mensaje {MSGMOR4} en la pantalla \getElementById[IU]{IUMAU01W}, vuelve al paso 4 de la \refTray{Principal}.}
+			
+			\Titem \UCerr{Tres}{La contraseña ingresada no coincide con la contraseña de la cuenta asociada}{Muestra el mensaje {MSGMOR5} en la pantalla \getElementById[IU]{IUMAU01W}, vuelve al paso 4 de la \refTray{Principal}.}
+			
+			\Titem \UCerr{Cuatro}{La cuenta del actor tiene asociado el estado ''Bloqueado''}{Muestra el mensaje {MSGMOR5} en la pantalla \getElementById[IU]{IUMAU01W}, vuelve al paso 4 de la \refTray{Principal}.}
+		\end{Titemize}
+		
+	}
+	\UCitem{Viene de}{}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Ingresa a la aplicación \textbf{CoffeeApp}, presionando el icono de nombre ''Coffee App'' en el lanzador de aplicaciones del teléfono celular.
+		
+		\UCpaso Verifica que no haya una sesión activa para el actor, con base a la regla de negocio \getElementById[BR]{BR-MAU002}.\refTray{A}
+		
+		\UCpaso Mostrará la pantalla \getElementById[IU]{IUMAU01W}.
+		
+		\UCpaso[\UCactor] Ingresa los datos de entrada solicitados en la pantalla \getElementById[IU]{IUMAU01W}.
+		
+		\UCpaso[\UCactor] Indica que ha concluido de ingresar los datos de entrada en la pantalla \getElementById[IU]{IUMAU01W}, presionando el botón \IUbutton{Iniciar Sesión}.\\\refTray{B}\refTray{C}\refTray{D}\refTray{E}\refTray{F}
+		
+		\UCpaso Verifica que los campos marcados como obligatorios no estén vacíos con base en la regla de negocio \getElementById[BR]{BR001}. 
+		
+		\UCpaso Verifica que exista una cuenta asociada al actor con el \getElementById[Entidad]{Cuenta.nombreDeUsuario} y obtiene la información de la cuenta.
+		
+		\UCpaso Verifica que la contraseña ingresada con por el actor corresponda con la \getElementById[Entidad]{Cuenta.contrasena} de la cuenta.
+		
+		\UCpaso Verifica que la cuenta del actor no tenga asociado el estado \textbf{Bloqueado} con base en la máquina de estados \getElementById[MAQ]{MAQMAU01}.
+		
+		\UCpaso Redirecciona al actor a su página de bienvenida que le corresponda a su rol.	
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Ya existe una sesión activa y asociada con el actor}
+		\UCpaso Indentifica que ya existe un sesión activa y asociada.
+		
+		\UCpaso Regresa al paso 10 de la \refTray{Principal}.
+	\end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{B}{El usuario decide Iniciar Sesión con su cuenta de Facebook}
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Continuar con Facebook} en la pantalla \getElementById[IU]{IUMAU01W}.
+		
+		\UCpaso Redirecciona al actor a la página de Inicio de Sesión con Facebook.
+		
+		\UCpaso Mostrará la pantalla \getElementById[IU]{IUMAU01W}. -> Cambiar a la pantalla de facebook
+		
+		\UCpaso [\UCactor] Realiza los pasos requeridos para Iniciar Sesión con Facebook.
+		
+		\UCpaso Regresa al paso 10 de la \refTray{Principal}.
+	\end{UCtrayectoriaA}
+	
+	\begin{UCtrayectoriaA}{C}{El usuario decide Iniciar Sesión con su cuenta de Gmail}
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Continuar con Gmail} en la pantalla \getElementById[IU]{IUMAU01W}.
+		
+		\UCpaso Redirecciona al actor a la página de Inicio de Sesión con Gmail.
+		
+		\UCpaso Mostrará la pantalla \getElementById[IU]{IUMAU01W}. -> Cambiar a la pantalla de gmail.
+		
+		\UCpaso[\UCactor] Realiza los pasos requeridos para Iniciar Sesión con Gmail.
+		
+		\UCpaso Regresa al paso 10 de la \refTray{Principal}.
+	\end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{D}{El usuario decide usar la aplicación sin registro previo}
+		\UCpaso[\UCactor] Presiona el botón \IUbutton{Usar App sin Registrarse} en la pantalla \getElementById[IU]{IUMAU01W}.
+		
+		\UCpaso Regresa al paso 10 de la \refTray{Principal}.
+	\end{UCtrayectoriaA}
+
+%	\begin{UCtrayectoriaA}{E}{El usario decide presionar el enlace para registar una cuenta}
+%	\end{UCtrayectoriaA}
+%
+%	\begin{UCtrayectoriaA}{F}{El usuario decide presionar el enlace para recuperar su contraseña}
+%	\end{UCtrayectoriaA}

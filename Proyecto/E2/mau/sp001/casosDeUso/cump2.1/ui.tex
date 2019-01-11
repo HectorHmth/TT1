@@ -1,0 +1,11 @@
+%!TEX root = ../../prueba.tex
+\begin{IU}{IUMP2.1}{Administrar Formas de Pago}{En esta pantalla el \getElementById[Stakeholder]{Cliente} va a administrar las formas de pago que podrá utilizar para realizar la compra de productos, es decir, podrá agregar o eliminar una nueva forma de pago, como por ejemplo una tarjeta de crédito o de débito.}{casosDeUso/cump2.1/IUMP21}
+	\item[Acciones:]\hspace{1pt}
+		\begin{Citemize}
+			\item \efectivoIcon{Efectivo} Al presionar este botón el cliente indica que ha decidido realizar el pago de los productos de sus ordenes a través de efectivo es decir, el cliente pagará en la caja del Local.
+			\item \IUbutton{Paypal} Al presionar este botón el cliente indica que utilizará los servicios de PayPal para realizar el pago de los productos de sus ordenes.  Redirige a la pantalla \getElementById[IU]{IUMP2.1.1C}.
+			\item \IUbutton{Tarjeta de Débito o Crédito} Al presionar este botón el cliente indica que va a agregar una nueva tarjeta de débito o crédito con la cual podrá realizar el pago de los productos de las ordenes que cree para uno o más Locales. Redirige a la pantalla \getElementById[IU]{IUMP2.1.1D}
+			\item \backIcon{} Redirige a la pantalla \getElementById[IU]{MN01A}.
+		\end{Citemize}
+
+\end{IU}

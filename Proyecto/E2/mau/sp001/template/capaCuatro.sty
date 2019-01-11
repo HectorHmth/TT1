@@ -1,0 +1,443 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{capaCuatro}[2017/06/24 Capa cuatro. Business]
+
+\RequirePackage{template/capaTres}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Requerimientos
+%Entorno:ReqSpec
+%Descripción: Crea una tabla en la cual se pueden colocar los requerimientos 
+%definidos para el proyecto, aplicación o sistema.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{ReqSpec}{%
+	%\subsubsection{Especificación de Requerimientos}
+	%\begin{center}
+	%\begin{longtable}[H]{|p{0.17\textwidth}|p{0.15\textwidth}|p{0.10\textwidth}|p{0.35\textwidth}|p{0.10\textwidth}|}
+	%\hline
+	%\rowcolor{principal}
+	%\bf\color{blanco}Identificador & \bf\color{blanco}Módulo &\bf\color{blanco}Tipo & \bf\color{blanco} Descripción & \bf\color{blanco} Prioridad\\\hline
+	%\endhead	
+}{	
+	%\hline
+	%\end{longtable}
+	%\end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Requerimientos
+%Comando:Req
+%Descripción: Agrega una fila a la tabla creada por el entorno ReqSpec y agrega
+%el ID y el nombre del requerimiento a la base de datos de Requerimientos
+%Argumentos:
+%	1 Identificador
+%	2 Nombre
+%	3 Módulo
+%	4 Tipo
+%	5 Descripción
+%	6 Prioridad
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Req}[7][]{%
+	\addElement{#2}{Requerimiento}{#3}{#7}{}{}%
+	\rule{\textwidth}{0.1pt}%
+	\subsubsection{#2-#3}%
+	\hypertarget{#2}{}%
+		\begin{description}%
+			\item[Módulo:]#4%
+			\item[Tipo:]#5%
+			\item[Prioridad:]#7%
+			\item[Descripción:]#6%
+			\IfStrEq{#1}{}{}{\item[Criterio de Conclusión:]#1}
+		\end{description}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Criterios de Conclusión para Requerimientos
+%Entorno:Criterios
+%Descripción: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{Criterios}{
+	\begin{longtable}[H]{|p{0.20\textwidth}|p{0.20\textwidth}|p{0.60\textwidth}|}
+	\hline
+	\rowcolor{principal}
+	\bf\color{blanco}Identificador & \bf\color{blanco}Requerimiento &\bf\color{blanco}Descripción del Criterio\\\hline
+	\endhead
+
+}{
+	\hline
+	\end{longtable}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Criterios de Conclusión para Requerimientos
+%Comando:CriterioReq
+%Descripción: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\CriterioReq}[4]{
+	\hypertarget{#1}{}
+	{#1}-{#2} & {#3} & {#4}\\\hline
+}
+
+
+\newenvironment{StakeHolder}[3]{
+	\addElement{#1}{Stakeholder}{#2}{}{}{}%
+	%\rule{\textwidth}{0.5pt}
+	\subsubsection{ST-#2}
+	\hypertarget{#1}{}%
+	\begin{description}
+		\item[Descripción:]#3
+}{
+	\end{description}
+}
+
+\newenvironment{Actor}[3]{
+	\addElement{#1}{Stakeholder}{#2}{}{}{}%
+	%\rule{\textwidth}{0.5pt}
+	\section{Actor:#2}
+	\hypertarget{#1}{}%
+	\begin{description}
+		\item[Descripción:]#3
+}{
+	\end{description}
+}
+
+
+
+\newenvironment{Glosario}{
+	\begin{description}
+}{
+	\end{description}
+}
+
+
+\newcommand{\bTerm}[3]{
+	\addElement{#1}{Term}{#2}{}{}{}
+	\item[\hypertarget{#1}{#2}:] #3
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Entorno: UserStory
+% Descripción: 
+% Parámetros:
+		%1 ID
+		%2 Nombre
+		%3 Descripción
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{UserStory}[5]{
+	\addElement{#1}{UserStory}{#2}{}{}{}%
+	\newpage
+	\section{#1 - #2}
+	\begin{longtable}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+	\hline
+	\begin{center}{\bf Identificador:} #1\end{center} &\begin{center}{\bf Título:} #2\end{center}\\
+	\endhead
+	\hline
+	\multicolumn{2}{|p{\textwidth}|}{\textbf{Descripción:} {#3}} \\
+	\hline
+}{
+	\end{longtable}
+}
+
+
+\newcommand{\userStoryItem}[2]{\bf #1 & #2\\\hline}
+
+%%%%%%%%%%%%%%%
+% Reglas de Negocio
+%%%%%%%%%%%%%%%
+
+
+\newenvironment{BusinessRule}[5]
+{%
+	\addElement{#1}{Regla de Negocio}{#2}{NA}{NA}{NA}%
+	\vspace*{-\baselineskip}
+	\noindent{\includegraphics[width=\textwidth]{template/img/BRRule}}
+	\vspace*{-\baselineskip}
+	\hypertarget{#1}{\subsubsection{{#1} {#2}}}%
+	\begin{description}\addtolength{\itemsep}{-0.5\baselineskip}%
+	\item[Clase:] {#3}%
+	\item[Tipo:] {#4}%
+	\item[Nivel:] {#5}%
+}%
+{%
+	\end{description}%
+}
+\newcommand{\BRItem}[1][]{%
+	\item[{#1}:]%
+}
+\newcommand{\bcCondition}{De condición. {\color{gray}\em Establece una condicionante para una operación.}}
+\newcommand{\bcIntegridad}{De Integridad. {\color{gray}\em Garantiza la integridad de la información.}}
+\newcommand{\bcAutorization}{De Autorización {\color{gray}\em Autoriza o restringe la ejecución de una operación.}}
+
+\newcommand{\bcDerivation}{De derivación {\color{gray}\em Explica como determinar una condición, estado o calcular un valor.}}
+
+\newcommand{\btEnabler}{Habilitadora. {\color{gray}\em Decisión de tipo Sí o No.}}
+\newcommand{\btTimer}{Cronometrada {\color{gray}\em Decisión que depende de un parámetro definido.}}
+\newcommand{\btExecutive}{Ejecutiva. {\color{gray}\em Decisión que depende de la autorización de un superior.}}
+
+\newcommand{\blControlling}{Controla. {\color{gray}\em La operación está restringida a que se cumpla siempre esta regla.}}
+\newcommand{\blInfluencing}{Motiva. {\color{gray}\em Debe motivarse este comportamiento, pero la operación no está restringida a que se cumpla siempre esta regla.}}
+
+
+\newenvironment{Maquina}[2]{
+   \addElement{#1}{Maquina}{#2}{}{}{}%
+   \section{#1 - #2}
+}{
+%
+}
+
+
+%%%%%%%%%%%%%%%
+% Casos de Uso
+%%%%%%%%%%%%%%%
+
+\newcommand\UCactor{\raisebox{-1mm}{\includegraphics[height=11pt]{template/img/actor}}}
+\newcommand\UCsist{\raisebox{-1mm}{\includegraphics[height=11pt]{template/img/usecase}}}
+
+\newcounter{counterUC}
+
+
+\newenvironment{UseCase}[4][template/img/UCRule]
+{\newpage%
+\addtocounter{counterUC}{1}%
+\addElement{#2}{CU}{#3}{NA}{NA}{NA}%
+\vspace*{-2\baselineskip}%
+\noindent{\includegraphics[width=\textwidth]{#1}}%
+\vspace*{-2\baselineskip}%
+\section{#2 #3}%
+%\ThisCenterWallPaper{0.85}{#1}%
+\noindent\hypertarget{#2}{}%
+\subsection{Resumen}%
+#4%
+\subsection{Descripción}%
+\arrayrulecolor{black}%
+\par\begin{longtable}{| p{.17\textwidth} | p{.75\textwidth} |}%
+	\arrayrulecolor{black}%
+	\rowcolor{black}%
+	\UCitem{\color{white}Caso de Uso}{\color{white}#2 #3}%
+	\endhead%
+	\arrayrulecolor{black}%
+}
+{\end{longtable}%
+\subsection{Trayectorias del Caso de Uso}}
+
+%----------------------------------------------------------------------
+% Agregar un elemento a la descripción del CU
+% use \UCitem{item}{descripción}
+% use \UCccitem{item}{descripción} para Gestión.
+\newcommand{\UCitem}[2]{{\bf {#1:}} & {#2} \\ \hline}%
+\newcommand{\UCccitem}[2]{{\bf {\color{colorGris}#1:}} & {\color{colorGris}#2} \\ \hline}%
+
+%----------------------------------------------------------------------
+% Agregar una sección en la descripción del CU
+% use \UCseccion[color]{descripción}
+% use \UCccseccion[color]{descripción} para gestión
+\newcommand{\UCsection}[1]{\multicolumn{2}{|c|}{{\bf \color{principal}#1}}\\ \hline}
+\newcommand{\UCccsection}[1]{\multicolumn{2}{|c|}{{\bf \color{secundario}#1}}\\ \hline}
+
+
+%-------------------------------------------------------------------------------------------
+% Definir un error:
+% \UCerr{num}{Condición}{Resultado}
+\newcommand{\UCerr}[3]{
+	\textbf{#1:} \hypertarget{\arabic{counterUC}:err#1} #2 #3
+}
+%-------------------------------------------------------------------------------------------
+% Referencia a un Error.
+% use: \refErr{Número}
+\newcommand{\refErr}[1]{%
+	%
+	\hyperlink{\arabic{counterUC}:err#1}{ $[$Error  #1$]$}%
+}
+
+
+\newcommand{\ioEscribir}{Se escribe desde el teclado }
+\newcommand{\ioSeleccionar}{Se selecciona con el mouse }
+\newcommand{\ioEscanear}[1][Código de Barras]{Se lee con un escáner de #1 }
+\newcommand{\ioObtener}{Se obtiene el identificador }
+
+%------------------------------------------------------------------------
+% Comando para escribir una trayectoria principal
+% use:
+% \begin{UCtrayectoria}
+%    \UCpaso[\UCActor] Oprime el boton buscar
+%    \UCpaso[\UCsist] Verifica que el usuario tenga permisos \refTray{IDTrayectoria}
+%    \UCpaso[\UCsist] El sistema ...
+%    \UCpaso[\UCsist] El sistema ...
+%    \UCpaso[\UCsist] El sistema ...
+%    ...
+% \end{UCtrayectoria}
+\newenvironment{UCtrayectoria}
+{%
+	\bigskip\noindent {\large {\bf Trayectoria principal}\\}%
+	\renewcommand{\varCurrentIdTray}{}%
+	\renewcommand{\labelenumi}{\textcolor{black}{\bf \theenumi}}%
+	\begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}%
+}%
+{%
+	\item[- -] - - {\em Fin del caso de uso}. \end{enumerate}%
+	\renewcommand{\labelenumi}{\theenumi}%
+}
+
+\newcommand{\varCurrentIdTray}{}
+\newcommand{\varCurrentFinTray}{}
+%------------------------------------------------------------------------
+% Comando para describir trayectorias Alternativas
+% use:
+% \begin{UCtrayectoriaA}{Id}{Condicion}
+%    \UCpaso[\UCActor] El actor oprime el boton buscar
+%    \UCpaso[\UCsist] El sistema ...
+%    ...
+% \end{UCtrayectoria}
+\newenvironment{UCtrayectoriaA}[3][Fin de la trayectoria]
+{%
+	\renewcommand{\varCurrentFinTray}{#1}%
+	\renewcommand{\varCurrentIdTray}{#2}%
+	\bigskip\noindent \hypertarget{tray:\arabic{counterUC}#2}{\large {\bf Trayectoria alternativa #2:}}%
+	\\{\small{\em\bf Condición:} {\em {#3}}}%
+	\renewcommand{\labelenumi}{\textcolor{black}{\bf {#2}-\theenumi}}%
+	\normalsize\begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}%
+}%
+{%
+	\item[- -] - - {\em \varCurrentFinTray}. \end{enumerate}%
+	\renewcommand{\labelenumi}{\theenumi}%
+}
+
+
+%------------------------------------------------------------------------
+% Comando para agregar un paso a una trayectoria, el paso puede ser
+% dado por el actor \UCactor o por el sistema \UCsist, por defecto el
+% paso es dado por el sistema.
+% use:
+%	\UCpaso[\UCactor] Descripcion del paso.
+% 	\UCpaso[\UCsist] Descripcion del paso.
+% 	\UCpaso Descripcion del paso (tiene el mismo efecto que el anterior).
+\newcommand{\UCpaso}[1][\UCsist]{\item {#1} }
+
+
+
+%-------------------------------------------------------------------------
+% Referencia a una Trayectoria Alternativa.
+% use: \refTray{Id}
+\newcommand{\refTray}[1]{%
+	%
+	\hyperlink{tray:\arabic{counterUC}#1}{ $[$Trayectoria  #1$]$}%
+}
+
+%-------------------------------------------------------------------------
+% Referencia a un caso de uso incluido
+% use: \includeUC{Id}
+\newcommand{\includeUC}[1]{\UCpaso[] {\bf Incluye:} \refIdElem{#1}}
+
+
+%-------------------------------------------------------------------------
+% Referencia a un Punto de Extensión
+%use: \UCExtensionPoint{nombre}{Situación que genera la extensión.}{región(seccion de la trayectoria en la que se puede dar la extensión)}{CU al que extienda}
+% Ejemplo:
+%	\UCExtensionPoint{Agregar artículo}{El actor quiere agregar un artículo a su carrito de compras.}{del paso 2 al paso 7}{\refUC{CU7.1}}
+\newcommand{\UCExtensionPoint}[4]{%
+\begin{description}\addtolength{\itemsep}{-0.5\baselineskip}%
+	\item[PE #1:] #2.%
+	\item[Región:] #3.%
+	\item[Extiende a:] #4.%
+\end{description}%
+}%
+
+
+
+%-------------------------------------------------------------------------
+% Insertar una Interfaz de Usuario
+% use: \IUfig[width]{imagefile}{id}{Nombre de la pantalla}
+\newcommand{\IUfig}[4][0.3]{%
+	\begin{figure}[htpb!]%
+		\begin{center}%
+			\hypertarget{#3}{\includegraphics[width=#1\textwidth]{#2}}
+			\caption{#4}%
+			\label{#3}%
+		\end{center}%
+	\end{figure}%
+}
+
+
+\newenvironment{IU}[5][0.4]{
+	\newpage
+	\addElement{#2}{IU}{#3}{}{}{}
+	\section{#2 - #3}
+	\begin{description}
+		\item[Descripción:] #4
+		\item[Diseño:]\hspace{1pt}
+			\IUfig[#1]{#5}{#2}{#2-#3}
+}{
+	\end{description}
+}
+
+\newcommand{\IUbutton}[1]{\keystroke{#1}}
+\newcommand{\IUcheck}[1]{\CheckedBox~{\textbf{#1}}}
+
+\newenvironment{mensaje}[3]{%
+	\addElement{#1}{Mensaje}{#2}{NA}{NA}{NA}
+	\hypertarget{#1}{{\hspace{1pt}}}%
+	\section{{#1}~{}{#2}} %
+	\begin{description}%
+		\item[Tipo:] {#3} %Operación Realizada/Notificación/Alerta/Error
+	}{%
+	\end{description}%
+}
+
+
+
+
+\def \varBusinessEntityId{}
+
+\newenvironment{Entidad}[2]{%
+	\addElement{#1}{Entidad}{#2}{NA}{NA}{NA}
+	\def \varBusinessEntityId{#1}%
+	\hypertarget{#1}{\hspace{1pt}}%
+	\newline%
+	\noindent{\includegraphics[width=\textwidth]{template/img/classRule}}%
+	\vspace{-25pt}%
+	\subsection{Entidad: #2}%
+	\noindent\begin{longtable}{|p{.2\textwidth}| p{.15\textwidth} | p{.5\textwidth} |p{.04\textwidth} |}%
+	\hline%
+	\multicolumn{4}{|c|}{{\cellcolor{secundario}\color{white}Atributos}}\\ \hline%
+	{\cellcolor{complementario}{\color{white}Nombre}} &%
+	{\cellcolor{complementario}{\color{white}Tipo}} &%
+	{\cellcolor{complementario}{\color{white}Descripción}} &%
+	{\cellcolor{complementario}{\color{white}Req.}}%
+	\\ \hline%
+	\endhead%
+}{%
+	\end{longtable}%
+}
+
+\newcommand{\attr}[5]{%
+	\def\idAttr{\varBusinessEntityId.#1}%
+	\addElement{\idAttr}{Atributo}{#2}{NA}{NA}{NA}%
+	{\bf\hypertarget{\varBusinessEntityId.#1}{#2}} & {\em{#3}} & {#4} & {#5} \\\hline%
+}
+
+\newcommand{\datRequerido}{Si}
+\newcommand{\datOpcional}{No}
+
+\newcommand{\EntityRelSection}{%
+	\multicolumn{4}{|c|}{{\cellcolor{secundario}\color{white}Relaciones}}\\ \hline%
+	{\cellcolor{complementario}{\color{white}Tipo de relación}} &%
+	{\cellcolor{complementario}{\color{white}Entidad}} &%
+	\multicolumn{2}{|c|}{{\cellcolor{complementario}{\color{white}Rol}}}
+	\\ \hline%
+}
+
+\newcommand{\brRelComposition}{{\color{principal}$\filleddiamond$\hspace{-1pt}---Composición}}
+\newcommand{\brRelAgregation}{{\color{principal}$\Diamond$\hspace{-1pt}---Agregación}}
+\newcommand{\brRelGeneralization}{{\color{principal}$\lhd$\hspace{-1pt}---Generalización}}
+
+\newcommand{\brRel}[3]{%
+	{\em{#1}} & {\bf{#2}} & \multicolumn{2}{|p{0.54\textwidth}|}{#3}\\\hline
+}
+
+
+
+
+

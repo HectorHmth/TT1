@@ -1,0 +1,59 @@
+%!TEX root = ../prueba.tex
+El presente documento tiene como propósito presentar la etapa de análisis y diseño del módulo de Autenticación y de Usuarios para el proyecto que se llevará a cabo durante el periodo escolar 2018-2019/1 en la Escuela Superior de Cómputo para la unidad de aprendizaje \textit{Desarrollo de Aplicaciones para Dispositivos Móviles}.Este proyecto está planeado y diseñado como lo indica el marco de trabajo Scrum y con un enfoque que se basa en los principios definidos en el \href{http://agilemanifesto.org}{Manifesto para el Desarrollo de Software ágil}.
+
+\section{Estructura del documento}
+
+En esta sección se describen brevemente los capítulos que conforman este documento así como notas, observaciones o comentarios adicionales que tienen como propósito apoyar en su lectura. El documento está estructurado de la siguiente forma:
+
+\begin{itemize}
+	\item En el capítulo \ref{ch:glosario} se enlistan los conceptos más relevantes del negocio sobre los cuales se
+
+	\item Parte Uno: 
+		La parte uno del documento está orientada a definir aquellos aspectos del sistema que no describen su comportamiento utilizando la especificación \textit{UML}.
+		\begin{itemize}
+			\item En el capítulo \ref{ch:arq} se utilizan diagramas para definir la arquitectura lógica del sistema. Esta definición a grandes rasgos identifica a los actores y la interacción directa de estos con el sistema, en en el capítulo \ref{ch:casosDeUso} se detalla esta interacción a través de historias de usuario.
+		
+			\item En el capítulo \ref{ch:modeloDeInformacion} se utiliza un diagrama de clases y tablas para mostrar la relación que existe entre las definiciones, términos y entidades relevantes en el negocio que permiten modelar su interacción con los actores del sistema. 		
+				
+			\item En el capítulo \ref{ch:reglas} se realiza la descripción de las normas, leyes o estrategias más relevantes que se deben aplicar al módulo, y en general considerarse en el proyecto para su implementación. 
+			
+		\end{itemize}
+	\item Parte Dos: \hspace{1pt}
+	Modelo Dinámico.
+		\begin{itemize}
+			\item En el capítulo \ref{ch:maquinas} se realiza la descripción de los estados o condiciones de   entidades o términos del negocio durante los procesos que en este documento se describen en el capítulo \ref{ch:casosDeUso}
+			\item En el capítulo \ref{ch:casosDeUso} se realiza la descripción de los requerimientos que se presentaron en el documento \textit{E01-Especificación del Proyecto} utilizando casos de uso como método de especificación.
+		\end{itemize}
+	\item Parte Tres: Diseño
+		\begin{itemize}
+			\item En el capítulo \ref{ch:interfaces} se describen las interfaces que serán utilizadas por el Cliente en la aplicación móvil.
+			\item En el capítulo \ref{ch:bd} se describe la notación y nomenclatura de la base de datos del sistema.
+			\item En el capítulo \ref{ch:arquitectura} se describe la arquitectura física del sistema así como la arquitectura lógica de la aplicación móvil y la aplicación web.
+			\item En el capítulo \ref{ch:mensajes} se describen los mensajes que el sistema utilizará para notificar a los actores cuando existen errores u operaciones exitosas.
+		\end{itemize}	
+\end{itemize}
+
+\section{Notación y Nomenclatura}
+
+Cada capítulo utiliza la siguiente nomenclatura para identificar a los diferentes elementos que conforman al documento.
+
+\begin{Citemize}
+	\item Para identificar a los stakeholders se utiliza el prefijo \textit{ST}.
+	\item Para identificar a los requerimientos funcionales se utiliza el prefijo \textit{REQMXXYY} donde $xx$ es una abreviatura para el módulo al que pertenece el requerimiento y  $yy$ es un dígito del $0$ al $99$ que sirve como identificador único para el requerimiento.
+	\item Para identificar a los requerimientos no funcionales se utiliza el prefijo \textit{REQNFXX} donde $xx$ es un dígito único del $0$ al $99$.
+	\item Para identificar los entregables se utiliza el siguiente esquema:EXX-CYY-SPZZZ donde XX puede ser:
+			\begin{Citemize}
+				\item 02 - Análisis y Diseño.
+				\item 03 - Implementación.
+				\item 04 - Manual de Usuario.
+			\end{Citemize}
+		 YY puede ser:
+		 	\begin{Citemize}
+				\item 01 - Módulo de Autenticación.
+				\item 02 - Módulo del Proveedor del Servicio.
+				\item 03 - Módulo del Cliente.
+				\item 04 - Módulo de Pagos.
+			\end{Citemize}
+		Y ZZZ es un dígito del 0 al 999 para especificar el Sprint en el cual se está trabajando. Si el entregable no tiene las letras SPZZZ entonces se trata de la recopilación de todos los sprints.
+\end{Citemize}
+

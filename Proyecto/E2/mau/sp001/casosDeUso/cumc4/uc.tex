@@ -1,0 +1,50 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC4}{Administrar Carrito de Compras}{
+	Permite realizar las acciones necesarias para llevar un control de los productos, forma de pago y tiempo en el cuál un \getElementById[Stakeholder]{Cliente} requiera una orden. \\
+	Debe considerarse que para poder administrar el carrito de compras deberá agregarse por lo menos un producto. \\Así mismo para poder realizar una orden, solo se podrán agregar productos al carrito de compras que pertenezcan a un mismo local, si el cliente solicita agregar un producto que pertenezca a otro local, se eliminarán los productos que había agregado anteriormente al carrito de compras.\\
+	
+	En el supuesto en el que el cliente requiera una orden en un lapso posterior podrá programar la orden en la hora deseada, siempre y cuando la hora cumpla con la regla de negocio \textbf{REGLA DE NEGOCIO}. }
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Diana Laura Mejía Mendoza}
+	\UCitem{Supervisó}{}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Media}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{Proporcionar un mecanismo mediante el cual un cliente pueda administrar su carrito de compras y así pueda realizar la orden en el local solicitado.}
+	\UCitem{Entradas}{\textbf{Ubicación de Usuario}}
+	\UCitem{Salidas}{}
+	\UCitem{Precondiciones}{}	
+	\UCitem{Postcondiciones}{}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR-MC1]{Número máximo de intentos}
+		\end{Titemize}
+	}
+	\UCitem{Errores}{Ninguno.}
+	\UCitem{Viene de}{}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Solicita administrar el carrito de compras dando clic en el icono \cartIcon del menú \getElementById[IU]{MN01}. \refTray{A}
+		\UCpaso Verifica si existen productos agregados al carrito de compras. \refTray{B}
+		\UCpaso Obtiene el nombre del local al cual pertenecen los productos que se agregaron al carrito de compras.
+		\UCpaso Obtiene el nombre, precio y cantidad de los productos que se agregaron al carrito de compras.
+		\UCpaso Calcula el precio total de los productos agregados al carrito de compras.
+		\UCpaso Establece por defecto el tipo de programacón de un pedido como \textbf{Lo antes posible}.
+		\UCpaso Obtiene el tipo de forma de pago que se estableció en la administración de formas de pago.
+		\UCpaso Muestra la pantalla \getElementById[UI]{UIMC4} con la información obtenida.		
+		\UCpaso[\UCactor] Gestiona la búsqueda de las cafeterías mediante las acciones ...
+	
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{El usuario ingreso}
+		\UCpaso FASVASD
+	
+	\end{UCtrayectoriaA}
+	

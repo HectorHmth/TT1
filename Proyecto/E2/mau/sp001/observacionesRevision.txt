@@ -1,0 +1,54 @@
+Observaciones de la revisión:
+(Actores del Sistema)
+1.- Dentro del organigrama de la empresa, considerar que no se maneja como tal un administrador, en su lugar en:  -> Soporte técnico*
+																																																		-> o Área de Sistemas
+																																																		
+2.- Dentro de la especificación del perfil del soporte técnico no es necesario un Ing, basta con alguien menos especializado.
+
+(Procesos)
+
+3.- El proceso que se tiene agruparlo en subprocesos para que pueda ser leido debido a que esta todo en un solo diagrama.
+
+4.- En la documentación del proceso, usar el tiempo en presente para simplificar la redacción
+
+(Requerimientos no Funcionales)
+
+5.- Integridad Lógica de Datos
+
+- Aquí se describe que se debe cubrir la integridad de los datos, es decir que hay mecanismo que nos permitan evitar la rebundancia de datos y que estos no se corrompan
+durante las operaciones que se realizan a la base:
+	Cubrir: - 3ra forma normal de la BD
+				 - Uso de transacciones para garantizar las propiedades ACID
+				 - Ver que elementos de persistencia se van a cubrir mediante el uso de transacciones
+				 
+6.- Extensibilidad
+
+- Esta es una característica secundaria (en el ámbito de la calidad), se describe el grado que tendra el sistema para poder extender sus módulos:
+	Cubrir: - Buenas prácticas
+				 - Código bien documentado y actualizado
+				 
+7.- Tolerancia a fallos
+
+- Aquí se describe que fallos soporta el sistema, como hay una cantidad inmensa de posible escenario solo describir los que el sistema puede sorportar.
+	Cubrir: - En el caso de nuestro sistema, se busca una toleracia a fallos cuando una transacción no se realiza de forma adecuada, por lo que va de la
+					mano con lo establecido en el punto no. 5
+				- Evitar fallos de hardware ya que son muchos casos y usalmente son dificiles de cubrir
+				
+8.- Recuperabilidad del sistema
+
+- Aquí se describe que tanto esfuerzo se debe de realizar para poder recuperarse de un fallo.
+
+9.- Integrabilidad
+
+- Aquí se describe con que otros sistemas o elementos puede coexistir nuestra aplicación sin afectar uno a otros
+	- Ejemplo: Plugins, versiones de SO, navegadores, etc.
+	
+(Casos de Uso)
+10.- En el diagrama de casos de uso, separar por módulos (web y móvil)
+
+11.- (No sé si al final si se agregaba) -> Considerar el caso en el cual se cancela un pedido dentro del diagrama de casos de uso (cocinero)
+
+
+(Máquina de Estados)
+
+12.- Dentro de la máquina de estados de una orden hay que considerar los posibles escenarios donde una orden se cancela o en todo caso se requiere reasignar por algún motivo.

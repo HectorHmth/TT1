@@ -1,0 +1,249 @@
+%!TEX root = ../prueba.tex
+En este capítulo se detallan los requerimientos que fueron identificados durante las reuniones llevadas a cabo con los proveedores del servicio de cafetería \textit{El Kioskito} y \textit{La otra madre}. Otros requerimientos fueron identificados por sesiones de lluvia de ideas entre los miembros del equipo.
+
+\section{Requerimientos Identificados y Criterios de Conclusión}
+
+\subsection{Módulo de Autenticación}
+\input{ch/reqMU}
+
+\subsection{Módulo del Proveedor de Servicio}
+\input{ch/reqMP}
+
+\subsection{Módulo de Pedidos}
+\input{ch/reqMPD}
+
+\subsection{Módulo de Pagos}
+\input{ch/reqPG}
+
+\section{Lista de Requerimientos ordenados por Prioridad}
+
+En esta sección se ordenan los requerimientos tomando como base su nivel de prioridad, el módulo al que pertenece y un estimado del tiempo que se tardará en cumplir el requerimiento. 
+
+
+\begin{center}
+\begin{longtable}{|p{0.30\textwidth}|p{0.30\textwidth}|p{0.2\textwidth}|p{0.1\textwidth}|}
+\hline
+	\rowcolor{principal}
+	\bf\color{white}Req. Id&\bf\color{white}User Story &\bf\color{white}Liberación&\bf\color{white}Prioridad\\
+	\endhead
+\hline
+
+	\getElementById[Requerimiento]{REQMU01} & USMU01-Iniciar Sesión & \begin{Titemize}
+																		\Titem E02-C01-SP001 Análisis y Diseño del Módulo de Autenticación
+																		\Titem E03-C01-SP001 Implementación del Módulo de Autenticación
+
+																	 \end{Titemize} & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMU02} & \begin{Titemize}
+												\Titem USMU02-Administrar Cuenta de Usuario
+												\Titem USMU02.1-Crear Cuenta de Usuario
+												\Titem USMU02.2-Modificar Cuenta de Usuario
+												\Titem USMU02.3-Eliminar Cuenta de Usuario
+											  \end{Titemize} & \begin{Titemize}
+																\Titem E02-C01-SP001 Análisis y Diseño del Módulo de Autenticación	
+																\Titem E03-C01-SP001 Implementación del Módulo de Autenticación	
+																\end{Titemize} & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMU03} & USMU03-Recuperar Cuenta de Usuario &
+	\begin{Titemize}
+		\Titem E02-C01-SP001 Análisis y Diseño del Módulo de Autenticación
+		\Titem E03-C01-SP001 Implementación del Módulo de Autenticación
+	\end{Titemize}
+	 & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP01} & \begin{Titemize}
+												\Titem USMP01-Administrar Establecimientos.
+												\Titem USMP01.1-Agregar Nuevo Establecimiento.
+												\Titem USMP01.2-Editar Información de Establecimiento.
+												\Titem USMP01.3-Eliminar Establecimiento.
+											  \end{Titemize} & \begin{Titemize}
+																\Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio.
+																\Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio.
+																\end{Titemize}
+											  & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP03} & \begin{Titemize}
+												\Titem USMP02-Administrar Productos.
+												\Titem USMP02.1-Agregar Nuevo Producto a Inventario.
+												\Titem USMP02.2-Editar Información de Producto.
+												\Titem USMP02.3-Eliminar Producto de Inventario.
+											  \end{Titemize} & \Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio.\Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio. & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP04} & \begin{Titemize}
+												\Titem USMP03-Registrar entrada de producto a cafetería.
+											  \end{Titemize} & \Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio.\Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio.& Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP09} & \begin{Titemize}
+												\Titem USMPD02-Realizar Pedido
+											  \end{Titemize} & \Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente.\Titem E03-C03-SP001 Implementación del Módulo del Cliente. & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP05} & \begin{Titemize}
+												 \Titem USMP04-Administrar Paquetes de Cafetería.
+												 \Titem USMP04.1-Agregar Paquete.
+												 \Titem USMP04.2-Editar Paquete.
+												 \Titem USMP04.3-Eliminar Paquete.
+											  \end{Titemize} & \Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio.\Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio.& Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP06} & \begin{Titemize}
+												\Titem USMP05-Consultar lista de pedidos.
+											  \end{Titemize} & \Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio.\Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio. & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP07}& \begin{Titemize}
+												\Titem USMP06-Consultar pedido.
+											 \end{Titemize} & \Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio.\Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio. & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP08}& \begin{Titemize}
+												\Titem USMPD02-Realizar Pedido
+												\Titem USMP07-Preparar pedido.
+												\Titem USMP08-Deshechar pedido.
+												\Titem USMP09-Notificar conclusión de pedido.
+												\Titem USMPG01-Pagar en caja con efectivo.
+												\Titem USMPG02-Pagar en caja con tarjeta de crédito/débito.
+												\Titem USMPG03-Pagar con una cuenta de PayPal.
+												\Titem USMPG04-Pagar con tarjeta de crédito/débito.
+											 \end{Titemize} & 
+											 \Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio.
+											 \Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio.
+											 \Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente.
+											 \Titem E03-C03-SP001 Implementación del Módulo del Cliente.
+											 
+											 & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP15} & \begin{Titemize}
+												\Titem USMP10-Venta en caja
+											  \end{Titemize} &\Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio. \Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio.& Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMPD01} & \begin{Titemize}
+													\Titem USMPD01-Programar pedido.
+											   \end{Titemize} & 
+											   \Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente.
+											   \Titem E03-C03-SP001 Implementación del Módulo del Cliente.
+											   & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMPD02} & \begin{Titemize}
+													\Titem USMPD02-Realizar pedido.
+											   \end{Titemize} & 
+											   \Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente.
+											   \Titem E03-C03-SP001 Implementación del Módulo del Cliente.
+											   & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMPD03} & \begin{Titemize}
+													\Titem USMPD03-Agregar producto a pedido.
+												\end{Titemize} &
+												\Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente.
+												\Titem E03-C03-SP001 Implementación del Módulo del Cliente.
+												 & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMPG01} & \begin{Titemize}
+													\Titem USMPG01-Pagar en caja con efectivo.
+											    \end{Titemize} &
+											    \Titem E02-C04-SP001 Análisis y Diseño del Módulo de Pagos.
+											    \Titem E03-C04-SP001 Implementación del Módulo de Pagos.
+											     & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMPG03} & \begin{Titemize}
+													\Titem USMPG03-Pagar con una cuenta de PayPal.
+											   \end{Titemize} & 
+											   \Titem E02-C04-SP001 Análisis y Diseño del Módulo de Pagos.
+											   \Titem E03-C04-SP001 Implementación del Módulo de Pagos.
+											   & Alta\\
+\hline
+	\getElementById[Requerimiento]{REQMP11} & \begin{Titemize}
+													\Titem USMP11-Administrar promociones de cafetería.
+													\Titem USMP11.1-Agregar promoción.
+													\Titem USMP12.2-Editar promoción.
+													\Titem USMP12.3-Guardar promoción.
+													\Titem USMP12.4-Eliminar promoción.
+											  \end{Titemize} & \Titem E02-C02-SP001 Análisis y Diseño del Módulo del Proveedor del Servicio. \Titem E03-C02-SP001 Implementación del Módulo del Proveedor del Servicio.& Media\\
+\hline
+	\getElementById[Requerimiento]{REQMPD06} & \begin{Titemize}
+													\Titem USMPD04-Encontrar establecimiento por filtro.
+												\end{Titemize}&\Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente.\Titem E03-C03-SP001 Implementación del Módulo del Cliente. & Media\\
+\hline
+	\getElementById[Requerimiento]{REQMPD07} & \begin{Titemize}
+													\Titem USMPD05-Consultar carrito de compra.
+												\end{Titemize} &\Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente. \Titem E03-C03-SP001 Implementación del Módulo del Cliente.& Media\\
+\hline
+	\getElementById[Requerimiento]{REQMPG02} & \begin{Titemize}
+													\Titem USMPG02-Pagar en caja con tarjeta de crédito/débito.
+												\end{Titemize} &\Titem E02-C04-SP001 Análisis y Diseño del Módulo de Pagos.\Titem E03-C04-SP001 Implementación del Módulo de Pagos. & Media\\
+\hline
+	\getElementById[Requerimiento]{REQMPG04} & \begin{Titemize}
+													\Titem USMPG04-Pagar con tarjeta de crédito/débito.
+												\end{Titemize}&\Titem E02-C04-SP001 Análisis y Diseño del Módulo de Pagos.\Titem E03-C04-SP001 Implementación del Módulo de Pagos. & Media\\
+\hline
+	\getElementById[Requerimiento]{REQMPG05} & \begin{Titemize}
+													\Titem USMPG05-Administrar tarjetas de crédito/débito.
+													\Titem USMPG05.1-Agregar nueva tarjeta de crédito/débito.
+													\Titem USMPG05.2-Editar tarjeta de crédito/débito.
+													\Titem USMPG05.2-Eliminar tarjeta de crédito/débito.
+												\end{Titemize}&\Titem E02-C04-SP001 Análisis y Diseño del Módulo de Pagos.\Titem E03-C04-SP001 Implementación del Módulo de Pagos. & Media\\
+\hline
+	\getElementById[Requerimiento]{REQMU04}& \begin{Titemize}
+													\Titem USMU04-Vincular cuenta de Google.
+											\end{Titemize} & No contemplado &Baja\\
+\hline
+	\getElementById[Requerimiento]{REQMU05}& \begin{Titemize}
+													\Titem USMU05-Vincular cuenta de Facebook.
+											 \end{Titemize}& No contemplado & Baja\\
+\hline
+	\getElementById[Requerimiento]{REQMP02}& \begin{Titemize}
+												\Titem USMP13-Administrar proveedores.
+												\Titem USMP13.1-Agregar nuevo proveedor.
+												\Titem USMP13.2-Editar información de proveedor.
+												\Titem USMP13.3-Eliminar Proveedor
+											\end{Titemize}& No contemplado& Baja\\
+\hline
+	\getElementById[Requerimiento]{REQMP10}& \begin{Titemize}
+												\Titem USMP14-Generar reporte de experiencia de clientes.
+												\end{Titemize} & No contemplado & Baja\\
+\hline
+	\getElementById[Requerimiento]{REQMP12} & \begin{Titemize}
+												\Titem USMP15-Generar reporte de promedio de entradas / salidas.
+											\end{Titemize} & No contemplado & Baja\\
+\hline
+	\getElementById[Requerimiento]{REQMP13}& \begin{Titemize}
+												\Titem USMP16-Generar reporte de productos más consumidos
+											\end{Titemize} & No contemplado & Baja\\
+\hline
+	\getElementById[Requerimiento]{REQMPD04}& \begin{Titemize}
+													\Titem USMPD06-Calificar el servicio.
+											  \end{Titemize} & \Titem E02-C03-SP001 Análisis y Diseño del Módulo del Cliente.\Titem E03-C03-SP001 Implementación del Módulo del Cliente.& Baja\\
+
+\hline
+
+\end{longtable}
+\end{center}
+
+
+
+\begin{UserStory}{USMU01}{Iniciar Sesión}{Como \textit{Usuario} requiero autenticarme para de esta forma utilizar las funcionalidades que me ofrece el sistema que corresponden a mi rol.
+	\begin{Citemize}
+		\item Si estoy ingresando al sistema por medio de la aplicación móvil, ingresaré mi nombre de usuario y mi contraseña como se muestra en la pantalla \getElementById[UI]{UIMU01M}.
+		\item Si estoy ingresando al sistema por medio de la aplicación web, ingresaré mi nombre de usuario y contraseña como se muestra en la pantalla \getElementById[UI]{UIMU01W}
+	\end{Citemize}
+	
+	El sistema debe validar que:
+		\begin{Citemize}
+			\item Mi cuenta no este bloqueada como lo especifica la regla de negocio \getElementById{BR}{BR-MU001}. Si esta regla no se cumple el sistema me debe mostrar el mensaje \getElementById[MSG]{MSG01} en pantalla .
+			
+			\item No tenga una sesión activa en otro dispositivo como lo especifica la regla de negocio \getElementById{BR}{BR-MU002}. Si esta regla no se cumple el sistema me debe mostrar el mensaje \getElementById[MSG]{MSG02}en pantalla.
+		\end{Citemize}
+		
+	El sistema debe determinar mi rol y redirigirme a la pantalla correspondiente como se indica a continuación:
+		\begin{Citemize}
+			\item Si estoy ingresando al sistema por medio de la aplicación móvil como \textit{Cliente}, el sistema debe determinar mi posición a través del GPS, obtener una lista de al menos una cafeteria y máximo 5 que este cerca de mi posición en un radio de 3 kilómetros y mostrármelas como se muestra en la pantalla \getElementById[UI]{UIMU02M}. Si no se encuentra almenos una cafetería la aplicación móvil me debe mostrar el mensaje \getElementById[MSG]{MSG03} en pantalla.
+		\end{Citemize}
+	
+}
+	\userStoryItem{Autor:}{}
+	\userStoryItem{Prioridad:}{}
+	\userStoryItem{Madurez:}{}
+	\userStoryItem{Log de Cambios:}{}
+	\userStoryItem{Entradas:}{}
+	\userStoryItem{Salidas:}{}
+	\userStoryItem{Dependencia:}{}
+	\userStoryItem{Viene de:}{}
+	\userStoryItem{Extiende a:}{}	
+	\userStoryItem{Criterio de Conclusión:}{}
+\end{UserStory}

@@ -1,0 +1,126 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{capaDos}[2017/06/24 Capa dos. Información del Proyecto]
+
+\RequirePackage{template/capaUno}
+
+
+\newcommand{\projectCharter}{
+	\begin{longtable}{|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\rowcolor{secundario}
+		\multicolumn{2}{c}{\color{white}\bf Project Charter}\\
+		\endhead
+		\hline
+		{\bf Nombre del Proyecto:}&\varProyecto \\
+		\hline
+		{\bf Nombre de la Aplicación:} & \varApp \\
+		\hline
+		{\bf Nombre del Equipo:} & Lolicon Team \\
+		\hline
+		{\bf Visión del Proyecto:} & Diseñar e implementar una aplicación para dispositivos móviles Android que mejore el tiempo de respuesta de una cafetería para atender pedidos a clientes en horas de alta concurrencia.\\
+		\hline
+		{\bf Alcance:} & Probar la aplicación móvil para las dos cafeterías que se encuentran en la Escuela Superior de Cómputo y obtener una valoración de los alumnos, profesores y personal externo que pertenecen a la comunidad de esa unidad académica del Instituto Politécnico Nacional.\\
+		\hline
+		{\bf Fechas Importantes:} & \begin{Titemize}
+				\Titem Inicio del proyecto: 12-Sep-2018
+				\Titem Primer Entregable: 17-Sep-2018
+				\Titem Segundo y Tercer Entregable Módulo de Autenticación: 1-Oct-2018
+				\Titem Segundo y Tercer Entregable Módulo del Proveedor del Servicio: 16-Oct-2018
+				\Titem Segundo y Tercer Entregable Módulo del Cliente:31-Oct-2018
+				\Titem Segundo y Tercer Entregable Módulo de Pagos:15-Nov-2018
+				\Titem Conclusión del Proyecto:	7-Dic-2018		
+			\end{Titemize}\\
+		\hline
+		{\bf Entregables:} & \begin{Titemize}
+				\Titem E01-Definición de Proyecto.
+				\Titem E02-C01 Análisis y Diseño del Módulo de Autenticación.
+				\Titem E02-C02 Análisis y Diseño del Módulo del Proveedor del Servicio.
+				\Titem E02-C03 Análisis y Diseño del Módulo del Cliente.
+				\Titem E02-C04 Análisis y Diseño del Módulo de Pagos.
+				\Titem E03-C01 Implementación del Módulo de Autenticación.
+				\Titem E03-C02 Implementación del Módulo del Proveedor del Servicio.
+				\Titem E03-C03 Implementación del Módulo del Cliente.
+				\Titem E03-C04 Implementación del Módulo de Pagos.
+				\Titem E04-C01 Manual de Usuario del Módulo de Autenticación.
+				\Titem E04-C02 Manual de Usuario del Módulo del Proveedor del Servicio.
+				\Titem E04-C03 Manual de Usuario del Módulo del Cliente.
+				\Titem E04-C04 Manual de Usuario del Módulo de Pagos.
+		\end{Titemize}\\
+		\hline
+	\end{longtable}
+}
+
+
+\newcommand{\firmas}{
+	\newpage
+	\begin{longtable}{|c|c|c|}
+		\hline
+		\rowcolor{secundario}
+		\multicolumn{3}{c}{\bf \color{white} Firmas}\\
+		\hline
+		\bf Autoriza & \bf Integrantes &  \bf Recibe\\
+		\hline
+		& &\\
+		& &\\
+		\rule{0.33\textwidth}{0.5pt} & \rule{0.33\textwidth}{0.5pt} & \rule{0.33\textwidth}{0.5pt}
+		\\
+		& &\\
+		\varAlumnoUno & \varAlumnoDos & Lic. Ulises Vélez Saldaña\\
+		\hline
+		& & \\
+		& & \\
+		& \rule{0.33\textwidth}{0.5pt} & \\%\rule{0.33\textwidth}{0.5pt} \\
+		& &\\
+		& \varAlumnoTres & \\%\varProductOwner \\
+		\hline
+		& & \\
+		& & \\
+		& \rule{0.33\textwidth}{0.5pt} &\\
+		& & \\
+		& \varAlumnoCuatro & \\
+		\hline
+		& & \\
+		& & \\
+		& \rule{0.33\textwidth}{0.5pt} &\\
+		& & \\
+		& \varAlumnoCinco & \\
+		\hline
+	\end{longtable}
+
+}
+
+\newcommand{\clossing}{
+	\begin{center}
+	\begin{longtable}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+		\hline
+		\rowcolor{principal}
+		\bf\color{white} Miembro del Equipo & \bf\color{white} Rol & \bf \color{white}Contacto\\
+		\hline
+		\varAlumnoUno & Product Owner & \begin{Titemize}
+			\Titem Celular: \Telefon 55 7753 1553
+			\Titem Correo:\Email \url{fcomera.ipn.mx@gmail.com}
+		\end{Titemize}\\
+		\hline
+		\varAlumnoCuatro & Scrum Master & \begin{Titemize}
+			\Titem Celular:\Telefon 55 2034 4711
+			\Titem Correo:\Email \url{yolodaw6@gmail.com}
+		\end{Titemize}\\
+		\hline
+		\varAlumnoTres & Team Member & \begin{Titemize}
+			\Titem Celular:\Telefon 55 6328 2466
+			\Titem Correo:\Email \url{fernandoamc26@gmail.com}
+		\end{Titemize}\\
+		\hline
+		\varAlumnoDos & Team Member & \begin{Titemize}
+			\Titem Celular:\Telefon 55 4021 2192
+			\Titem Correo:\Email \url{eliot.cedillo.escom@gmail.com}
+		\end{Titemize}\\
+		\hline
+		\varAlumnoCinco & Team Member & \begin{Titemize}
+			\Titem Celular:\Telefon 55 4950 4127
+			\Titem Correo:\Email \url{overlord.lae@gmail.com}
+		\end{Titemize}\\
+		\hline
+	\end{longtable}
+	\end{center}
+}

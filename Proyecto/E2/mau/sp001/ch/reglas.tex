@@ -1,0 +1,182 @@
+%!TEX root = ../prueba.tex
+
+\section{Reglas de negocio}
+
+\subsection{Reglas dde Negocio Generales}
+
+En este capítulo se detallan las reglas de negocio que rigen al módulo de \varModulo y que el sistema deberá utilizar para controlar el acceso de los usuarios a las diferentes funcionalidades del sistema.
+
+%**************************BR001********************************
+\begin{BusinessRule}{BR001}{Campos obligatorios}{}{}{}
+	\BRItem[Versión] 1.0
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Los datos proporcionados en el sistema marcados como requeridos, no se deben omitir.
+	\BRItem[Sentencia] Sea un $Campo$ marcado como $Obligatorio$, $ |  campo.obligatorio = true$ 
+	$ \therefore \forall campo \Rightarrow campo.valor \neq \emptyset $
+
+	\BRItem[Ejemplo] Para iniciar sesión en el sistema \textbf{Coffee App}, el actor introducé todos los datos en los campos \textbf{Usuario} y \textbf{Contraseña} marcados como obligarios. 
+
+\end{BusinessRule}
+
+%**************************BR002********************************
+
+\begin{BusinessRule}{BR002}{Información correcta}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Todos los datos proporcionados al sistema deben pertenecer al tipo de dato establecido en el modelo de información.
+	\BRItem[Sentencia] Sea $F:$ Una expresión regular que determina el formato que un campo debe cumplir con base en el modelo de información. \\ $Dato$ Los datos ingresados por el actor, en un campo del sistema.\\
+	
+	Si $ Dato \in F \Longrightarrow InformacionCorrecta $
+	\BRItem[Ejemplos]
+		\begin{itemize}
+			\item El actor introduce su Nombre que contiene solo carácteres alfabéticos.
+			\item El actor introduce un número de celular, el cuál solamente contiene caractéres númericos.
+			\item El actor introduce un correo electrónico que contiene un símbolo '@' y cuya terminación es un dominio de correo electrónico.
+		\end{itemize}
+
+\end{BusinessRule}
+
+%**************************BR003********************************
+
+\begin{BusinessRule}{BR003}{Eliminación lógica de elementos}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Un elemento sólo se puede eliminar si no tiene asociaciones con otros elementos. 
+
+	\BRItem[Sentencia]  Si $E_x \in E_y \Longrightarrow NoSePuedeEliminarElemento$ \\
+	
+	Donde: $E_x  \wedge E_y$: Elementos registrados en el sistema.
+
+	\BRItem[Ejemplos]
+	\begin{itemize}
+		\item Una cafetería que tiene registrados productos no se puede eliminar.
+		\item Se puede eliminar la cafetería si y solo si no tiene ningún producto registrado.
+	\end{itemize}
+
+\end{BusinessRule}
+
+%**************************BR004********************************
+
+\begin{BusinessRule}{BR004}{Unicidad de elementos}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Un elemento no se puede duplicar en el ámbito donde es utilizado ni registrarse más de una vez. Dada la sentencia se consideran dentro de la regla las siguientes entidades y atributos:
+
+	\begin{itemize}
+		\item Cafetería, \{nombre\}
+		\item Producto, \{nombre\}
+	\end{itemize}
+	\BRItem[Sentencia] Sea $ E_1, E_2$: Entidades utilizadas en un mismo ámbito. \\
+	$A$: Atributo de una entidad. \\
+	 $ | \forall  (A \in E_1) \neq (A \in E_2)$.
+
+	\BRItem[Ejemplo]
+		\begin{itemize}
+			\item Dos cafeterías con diferentes nombres.
+			\item Cafetería El Kiosquito.
+			\item Cafetería Zen Garden
+		\end{itemize}
+
+\end{BusinessRule}
+
+%Negocio
+
+
+%**********************************************************
+\subsection{Reglas de Negocio}
+%**********************************************************
+
+
+%**************************BR-MAU001********************************
+
+\begin{BusinessRule}{BR-MAU001}{Número máximo de intentos}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción]El número máximo de intentos fallidos para ingresar al sistema será de 3, de lo contrario la cuenta se bloqueará hasta que el administrador cambie el estado de la cuenta.
+	
+	\BRItem[Sentencia] Sea $Num_I$: Número de intentos que el usuario realiza para ingresar al sistema. \\
+
+	Si $Num_I = 3 \Longrightarrow CuentaBloqueada$.
+
+
+\end{BusinessRule}
+
+%**************************BR-MAU002********************************
+
+\begin{BusinessRule}{BR-MAU002}{Sesión activa}{}{}{}
+
+
+\end{BusinessRule}
+
+%**************************BR-MAU003********************************
+
+\begin{BusinessRule}{BR-MAU003}{Contraseña válida}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Eric Alejandro López Ayala.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Una constraseña únicamente sera válida si tiene una longitud mínima de 8 carácteres, contiene al menos un carácter mayúscula, un carácter minúscula, un dígito y alguno de los siguientes carácteres especiales: '.' ',' '-' '\_'
+	\BRItem[Sentencia] Sea $F:$ Una expresión regular que determina el formato que un campo debe cumplir con base en el modelo de información. \\ $Dato$ Los datos ingresados por el actor, en un campo del sistema.\\
+	
+	Si $ Dato \in F \Longrightarrow ContrasenaValida $
+	\BRItem[Ejemplos]
+	\begin{itemize}
+		\item El actor introduce una contraseña de al menos 8 caráteres de longitud e incluye al menos un carácter minúscula, un carácter mayúscula, un dígito y alguno de los siguientes carácteres especiales: '.' ',' '-' '\_'
+	\end{itemize}
+	
+\end{BusinessRule}
+
+%**************************BR-MC005********************************
+
+\begin{BusinessRule}{BR-MC005}{Calificación de un producto}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Cada producto ofertado en un local tendrá una calificación, sólo un \textbf{Cliente} o una \textbf{Persona} que realizó la compra y se le entrego el producto podrá calificarlo. Así mismo, se pueden realizar $n$ calificaciones por persona del mismo producto, esto será con base en las veces que compró y se le entregó el producto.
+	\BRItem[Sentencia] 
+	
+\end{BusinessRule}
+
+%**************************BR-MC007********************************
+
+\begin{BusinessRule}{BR-MC007}{Notificaciones}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Cada producto ofertado en un local tendrá una calificación, sólo un \textbf{Cliente} o una \textbf{Persona} que realizó la compra y se le entrego el producto podrá calificarlo. Así mismo, se pueden realizar $n$ calificaciones por persona del mismo producto, esto será con base en las veces que compró y se le entregó el producto.
+	\BRItem[Sentencia] 
+	
+\end{BusinessRule}
+
+%**************************BR-MC008********************************
+
+\begin{BusinessRule}{BR-MC008}{Clasificación de notificaciones}{}{}{}
+	\BRItem[Versión] 1.0.
+	\BRItem[Estado] Propuesta.
+	\BRItem[Propuesta por] Diana Laura Mejía Mendoza.
+	\BRItem[Revisada por] Pendiente.
+	\BRItem[Aprobada por] Pendiente.
+	\BRItem[Descripción] Cada producto ofertado en un local tendrá una calificación, sólo un \textbf{Cliente} o una \textbf{Persona} que realizó la compra y se le entrego el producto podrá calificarlo. Así mismo, se pueden realizar $n$ calificaciones por persona del mismo producto, esto será con base en las veces que compró y se le entregó el producto.
+	\BRItem[Sentencia] 
+	
+\end{BusinessRule}

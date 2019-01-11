@@ -1,0 +1,91 @@
+\documentclass[11pt,twoside]{book}
+
+\usepackage{template/capaCinco}
+
+\title{Coffee App}
+\subtitle{E02-MAU-SP001}
+\entregable{E02}
+\modulo[MAU]{Módulo de Autenticación y Usuarios}
+\sprint{SP001}
+\proyecto{Desarrollo de una aplicación móvil para mejorar el tiempo de respuesta de pedidos de una cafetería}
+\productOwner{el de la café}
+\equipo{Lolicon Team}{Francisco Isidoro Mera Torres}{Cedillo Vázquez Eliot Uriel}{Martinez Calderón Fernando}{Mejía Mendoza Diana Laura}{Eric Alejandro López Ayala}
+\date{}
+
+\begin{document}
+	\LRCornerWallPaper{0.2}{template/img/izq}
+	\maketitle
+	\LRCornerWallPaper{0.2}{template/img/izq}
+	\tableofcontents
+	
+	\newpage
+	\projectCharter
+	\firmas
+	
+	\chapter{Introducción}
+	\input{ch/intro}
+	
+	\chapter{Glosario}
+	\label{ch:glosario}
+	\input{ch/glosario}
+	
+	\chapter{Actores}
+	\label{ch:actores}
+	\input{ch/actores}
+	
+	\part{Modelo Estático}
+	
+	\chapter{Arquitectura Lógica}
+	\label{ch:arq}
+	\input{ch/arqLogica}
+	
+	\chapter{Modelo de Información}
+	\label{ch:modeloDeInformacion}
+	En este capítulo se utiliza un diagrama de clases para mostrar la relación que existe en los tériminos y entidades de negocio descritas en el capítulo \ref{ch:glosario}. Estas relaciones están descritas con base en la especificación de \textit{UML} y en la base de datos del sistema.
+	\input{ch/modeloDeInformacion}
+	
+	\chapter{Reglas de Negocio}
+	\label{ch:reglas}
+	\input{ch/reglas}
+	
+	\part{Modelo Dinámico}
+	
+	\chapter{Máquinas de Estado}
+	\label{ch:maquinas}
+	\input{ch/maquinas}
+	
+	\chapter{Casos de Uso}
+	En este capítulo se encuentra la descripción de los casos de uso que se encuentran del lado izquierdo de la figura \ref{fig:arqLogica}, es decir, a los que hacen referencia únicamente a la aplicación móvil. La descripción de los casos de uso se hace con base en el documento \textit{E1-Especificación del Proyecto} en donde se pueden encontrar los requerimientos funcionales del sistema. Es importante mencionar que los casos de uso fueron escritos utilizando un enfoque \textit{Black Box}.
+	\label{ch:casosDeUso}
+	\input{ch/casos}
+	
+	\part{Diseño}
+	
+	\chapter{Interfaces de Usuario}
+	\label{ch:interfaces}
+	\input{ch/interfaces}
+
+	\chapter{Base de Datos}
+	\label{ch:bd}
+	\input{ch/bd}
+	
+	\chapter{Arquitectura}
+	\label{ch:arquitectura}
+	\input{ch/arq}
+	
+	\chapter{Diagramas de Secuencia}
+	\label{ch:diagramasDeSecuencia}
+	\input{ch/secuencia}
+	
+	\appendix
+	
+	\chapter{Mensajes}
+	\label{ch:mensajes}
+	\input{ch/msg}
+	
+	\newpage
+	\clossing
+	
+	%\saveData
+
+\end{document}

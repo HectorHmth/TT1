@@ -1,0 +1,174 @@
+%!TEX root = ../prueba.tex
+En este capítulo se especifican los mensajes que el sistema utiliza para notificar a los actores sobre el estado sobre las operaciones que están realizando.
+
+%%%%%%%%%%%%%%%%%%
+%%%%%% Mensajes Generales
+%%%%%%%%%%%%%%%%%%
+
+%Tipos de Mensajes
+%Operación/Notificación/Alerta/Error
+\begin{mensaje}{MSG1}{Operación Exitosa}{Operación}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que la acción se ha concretado de forma exitosa.
+	\item[Redacción:]La operación se realizó de forma exitosa.
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}s
+
+\begin{mensaje}{MSG2}{Operación Fallida}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que hubo un error y por lo tano la acción no se pudo concretar de forma exitosa.
+	\item[Redacción:]Error, la operación no se pudo llevar a cabo.
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG3}{Elementos No Disponibles}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que los elementos solicitados no están disponibles.
+	\item[Redacción:]¡No hay elementos para mostrarte!
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG4}{Duplicado de Información}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que hubo un error debido a un elemento duplicado, por lo que la acción no se puede llevar acabo.
+	\item[Redacción:]¡Ya existe un elemento con la misma información!
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG5}{Falta dato obligatorio}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que hubo un error debido a que hace falta un dato considerado como obligatorio, por lo que la acción no se puede llevar acabo.
+	\item[Redacción:]"!Error¡ Los campos marcados con * son obligatorios, 
+favor de ingresar el campo faltante."
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG6}{Formato de campo incorrecto}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que hubo un error debido a que el dato ingresado posee un formato incorrecto acorde a la regla(s) de negocio establecidas, por lo que la acción no se puede llevar acabo.
+	\item[Redacción:]El dato ingresado es incorrecto, favor de ingresar un dato válido.
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG7}{Eliminar elemento}{Alerta}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que se pretende eliminar un elemento, por lo que pregunta por la confirmación de esta operación.
+	\item[Redacción:]¿Desea eliminar el ELEMENTO?
+	\item[Parámetros:] \hspace{0.1pt}
+	\begin{Citemize}
+ 			\item ELEMENTO
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG8}{Longitud de campo incorrecta}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que hubo un error debido a que la longitud del dato ingresado no concuerda con lo establecido en la regla(s) de negocio establecidas, por lo que la acción no se puede llevar acabo.
+	\item[Redacción:]La longitud de campo es incorrecta.
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG9}{No existe información necesaria en el sistema}{Alerta}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que no existe la información necesaria en el sistema para poder llevar acabo la operación.
+	\item[Redacción:]Falta información necesaria en el sistema para poder realizar está operación.
+	\item[Parámetros:] 
+	\begin{Citemize}
+ 			\item 
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG10}{Confirmación de operación}{Alerta}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que se pretende realizar una operación, por lo que se solicita la confirmación de la operación para poder llevarla acabo.
+	\item[Redacción:]¿Está seguro que requiere ACCION ELEMENTO ?
+	\item[Parámetros:] \hspace{0.1pt}
+	\begin{Citemize}
+ 			\item ACCION
+			\item ELEMENTO
+		\end{Citemize}
+	\item[Ejemplo:] 
+\end{mensaje}
+
+\begin{mensaje}{MSG11}{Campo vacio}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que hubo un error debido a que un campo en particular no contiene datos, por lo que la operación no se puede llevar acabo.
+	\item[Redacción] Error, Este campo está vacío.
+	\item[Parámetros] No aplica
+\end{mensaje}
+
+
+%%%%%%%%%%%%%%%%%%
+%%%%%% Mensajes del modulo
+%%%%%%%%%%%%%%%%%%
+\begin{mensaje}{MSGMAU1}{El nombre de usuario no posee cuenta una cuenta asociada}{Error}
+	\item[Descripción:] Este mensaje tiene la finalidad de comunicar que el nombre de usuario insertado para iniciar sesión no posee una cuenta asociada.
+	\item[Redacción] Error: Cuenta no encontrada.
+	\item[Parámetros] No aplica.
+\end{mensaje}
+
+\begin{mensaje}{MSGMAU2}{La contraseña insertada no coincide con la cuenta asociada}{Error}
+	\item[Descripción:] Este mensaje tiene la finalidad de comunicar que la contraseña insertada para iniciar sesión no coincide con la contraseña de la cuenta asociada.
+	\item[Redacción] Error: Contraseña no coincide.
+	\item[Parámetros] No aplica.
+\end{mensaje}
+
+\begin{mensaje}{MSGMAU3}{La cuenta posee el estado bloqueado}{Error}
+	\item[Descripción:] Este mensaje tiene la finalidad de comunicar que no se puede iniciar sesión con la cuenta asociada, ya que posee el estado Bloqueado.
+	\item[Redacción] Error: Cuenta bloqueada.
+	\item[Parámetros] No aplica.
+\end{mensaje}
+
+\begin{mensaje}{MSGMAU4}{El nombre de usuario ya posee una cuenta asociada}{Error}
+	\item[Descripción:] Este mensaje tiene la finalidad de comunicar que no se puede regsitrar una cuenta haciendo uso de este nombre de usuario, debido a que ya existe una cuenta asociada a este nombre. 
+	\item[Redacción] Error: Nombre de usuario no disponible.
+	\item[Parámetros] No aplica.
+\end{mensaje}
+
+%%%%%%%%%%%%%%%%%%
+%%%%%% Mensajes del modulo
+%%%%%%%%%%%%%%%%%%
+\begin{mensaje}{MSGMOR1}{Geolocalización Inhabilitada}{Alerta}
+	\item[Descripción:]Este mensaje tiene la finalidad de indicarle al Cliente que al no tener habilitada la geolocalización en su dispositivo móvil no es posible realizar la búsqueda de locales cerca de su posición.
+	\item[Redacción]No es posible determinar tu ubicación porque el servicio está inhabilitado
+	\item[Parámetros] No aplica.
+\end{mensaje}
+
+\begin{mensaje}{MSGMOR2}{No hay locales cerca}{Alerta}
+	\item[Descripción:]Este mensaje tiene la finalidad de indicarle al Cliente que no fue posible encontrar al menos un local cerca de su ubicación.
+	\item[Redacción]No hay locales cerca de tu ubicación.
+	\item[Parámetros] No aplica.
+\end{mensaje}
+
+\begin{mensaje}{MSGMOR3}{Ubicación No Exacta}{Alerta}
+	\item[Descripción:]Este mensaje tiene la finalidad de indicarle al Cliente que la dirección de un local no es completamente exacta.
+	\item[Redacción]Advertencia, la dirección desplegada no es exacta.
+	\item[Parámetros] No aplica.
+\end{mensaje}
+
+\begin{mensaje}{MSGMOR4}{Cuenta No Encontrada}{Error}
+	\item[Descripción:]Este mensaje tiene la finalidad de comunicar que hubo un error al tratar de encontrar una cuenta asociada al nombre de usuario proporcionado.
+	\item[Redacción]Error, no existe cuenta asociada al nombre de usuario ingresado.
+	\item[Parametros] No aplica.
+\end{mensaje}
+
+
+

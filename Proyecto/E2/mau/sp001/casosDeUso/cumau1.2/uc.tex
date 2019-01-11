@@ -1,0 +1,54 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMAU1.2}{Recuperar contraseña}{Permite al \getElementById[Stakeholder]{Cliente} recuperar su contraseña en caso de que la haya olvidado para que pueda recuperar su informacion guardada, se necesitara el correo electronico registrado en el sistema para poder mandarle un mensaje con la contraseña almacenada en el sistema.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Fernando Alonso Martínez Calderón}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{El cliente tendra la herramienta para recuperar su contraseña y usuario con la cual se registro en el sistema.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{cuenta.correoElectronico}.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{cuenta.cnombreDeUsuario}.
+		\Titem \getElementById[Entidad]{cuenta.contraseña}.
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem El cliente debe de estar registrado en el sistema.		
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem El cliente podrá ingresar su correo electronico para la recuperacion de su cuenta de usuario.
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{\begin{Titemize}
+		\Titem \getElementById[BR]{BR001}
+		\Titem \getElementById[BR]{BR002}
+		\end{Titemize}}
+	\UCitem{Errores}{\begin{Titemize}
+		\Titem \UCerr{Uno}{Cuando el cliente ingrese mal el formato de su correo electronico}{se mostrará en la pantalla el mensaje \getElementById[MSG]{MSG6}.}
+		\Titem \UCerr{Dos}{Cuando no exista la cuenta de usuario con el correo que ingreso el cliente}{se desplegará en la pantalla el mensaje \getElementById[MSG]{MSG3}.}
+		\Titem \UCerr {Tres}{Cuando el cliente omita un campo marcado como obligatorio}{se montrará en la pantalla el mensaje \getElementById[MSG]{MSG5}.}
+	\end{Titemize}}
+	\UCitem{Viene de}{\getElementById[CU]{CUMAU1}}
+	\end{UseCase}
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Indica que ha olvidado su contraseña presionando en la opcion \textbf{¿Olvidaste tu contraseña?} de la pantalla \getElementById[IU]{UIMAU01}.
+		\UCpaso Muestra la pantalla \getElementById[IU]{UIMAU1.2}.
+		\UCpaso [\UCactor]Ingresa el correo electronico de su cuenta. \label{CUMAU1.2-Ingresa}
+		\UCpaso [\UCactor]Presiona el botón \textbf{Enviar} \refTray{A}
+		\UCpaso Verifica que no se hayan omitido los campos como obligatorios con base a la regla de negocio. \refErr{Tres} \getElementById[BR]{BR001}
+		\UCpaso Verificar que la informacion ingresada cumpla con el formato de un correo electronico con base en la regla de negocio. \refErr{Uno} \getElementById[BR]{BR002}
+		\UCpaso Verificar que la dirección correo electronico ingresado este asociado a un usuario registrado en el sistema de coffe app.\refErr{Dos}
+		\UCpaso Obtiene la contraseña asociada al correo electronico ingresado en el paso \ref{CUMAU1.2-Ingresa}
+		\UCpaso Envia el mensaje \getElementById[MSG]{} a la dirección del correo electronico ingresada en el paso \ref{CUMAU1.2-Ingresa}
+	\end{UCtrayectoria}
+	
+	\begin{UCtrayectoriaA}{A}{El actor requiere cancelar la operacion}
+		\UCpaso [\UCactor] preciona el boton \textbf{Cancelar}
+	\end{UCtrayectoriaA}
+	

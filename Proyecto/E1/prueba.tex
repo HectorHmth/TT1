@@ -1,0 +1,43 @@
+\documentclass[11pt,twoside]{book}
+
+\usepackage{template/capaCinco}
+
+\title{Coffee App}
+\subtitle{E01-Definición del Proyecto}
+\proyecto{Desarrollo de una aplicación móvil para mejorar el tiempo de respuesta de pedidos de una cafetería}
+\productOwner{el de la café}
+\equipo{Lolicon Team}{Francisco Isidoro Mera Torres}{Cedillo Vázquez Eliot Uriel}{Martinez Calderón Fernando}{Mejía Mendoza Diana Laura}{Eric Alejandro López Ayala}
+\date{}
+
+\begin{document}
+	\LRCornerWallPaper{0.1}{template/img/izq}
+	\maketitle
+	\LRCornerWallPaper{0.1}{template/img/izq}
+	\tableofcontents
+	\listoffigures
+	
+	\newpage
+	\projectCharter
+	\firmas
+	
+	\chapter{Introducción}
+	\input{ch/intro}
+	
+	\chapter{Problemática}
+	\label{ch:bc}
+	\input{ch/bc}
+	
+	
+	\chapter{Propuesta de Solución}
+	\label{ch:ps} 
+	\input{ch/ps}
+	
+	\chapter{Alcance}
+	\label{ch:al}
+	\input{ch/alcance}
+	
+	\newpage
+	\clossing
+	
+	%\saveData
+\end{document}

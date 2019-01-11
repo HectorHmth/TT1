@@ -1,0 +1,54 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC10M}{Calificar Producto}{%TODO:Hacer la descripción
+}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Eliot Uriel Cedillo Vázquez}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Baja}
+	\UCitem{Complejidad}{Baja}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{Valorar la satisfacción de calidad y servicio respecto a un pedido realizado en algún local.}
+	\UCitem{Entradas}{Numero de estrellas de calificación}
+	\UCitem{Salidas}{Calificación final}
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			\Titem El pedido debe haber sido entregado.
+         \end{Titemize}}	
+	\UCitem{Postcondiciones}{Se agregará la calificación a la calificación general del producto}
+	\UCitem{Reglas de Negocio}{\getElementById[BR]{BR-MAU01}}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			
+			\Titem No se pudo registrar la calificación.
+			\Titem \UCerr{A}{Cuando se va a calificar un producto que no le ha sido entregado al cliente }{el sistema despliega el mensaje \getElementById[MSG]{MSG01}.}
+		\end{Titemize}
+		
+	}
+	\UCitem{Viene de}{}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso Comprueba el estado de un pedido.\refErr{A}
+		\UCpaso Envía una notificación si el estado del pedido es igual a entregado.
+		\UCpaso[\UCactor]Presiona la notificación.
+		\UCpaso Muestra la Interfaz de usuario 17.
+		\UCpaso[\UCactor]Presiona el numero de estrellas que otorgara para calificar el producto.
+		\UCpaso[\UCactor] Dara click en el boton \IUbutton{Aceptar}\refTray{A}
+		\UCpaso Guarda la calificación correspondiente al producto.
+		\UCpaso Promediara la calificación nueva con la calificación general del producto.
+		\UCpaso Muestra el mensaje:"Calificación guardada con exito gracias por tu opinion :)".%El mensaje puede cambiar segun lo que sea mas conveniente
+		\UCpaso Muestra la interfaz de usuario 3.
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Cancelación de calificación}
+		\UCpaso[\UCactor]Dara click en el boton \IUbutton{Cancelar}
+		\UCpaso No guardara la calificación.
+		\UCpaso Muestra la interfaz de usuario 13
+%aqui no recuerdo si vamos a recordar al usuario que califique el producto por un cierto periodo de tiempo, si fuese excedido ese periodo de tiempo se le pediriade nuevo na calificación hasta que se vuelva a ordenar ese producto y se entregue satisfactoriamente.
+	\end{UCtrayectoriaA}

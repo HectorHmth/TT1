@@ -1,0 +1,60 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMP2.1.2}{Eliminar forma de pago}{Cuando el \getElementById[Stakeholder]{Cliente} requiere quitar una forma de pago que ya no le interese tener registrada en su cuenta, podrá quitarla de las opciones de forma de pago con las que se realizan los pedidos ya sea para ingresar una nueva tarjeta de crédito o débito o una nueva cuenta de Paypal.
+Es importante saber que las formas de pago no son completamente borradas del sistema sino que las que sean eliminadas pasaran a un estado donde el usuario no pueda visualizarlas o hacer uso de ellas ya que es importante conservar esta información en el sistema para conservar la consistencia de información.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Eliot Uriel Cedillo Vázquez}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\begin{Titemize}
+	\Titem \getElementById[Stakeholder]{Cliente}
+	\end{Titemize}}
+	\UCitem{Propósito}{Quitar formas de pago que el usuario ya no requiera para poder registrar nuevas formas de pago que esten dentro de las opciones disponibles.}
+	\UCitem{Entradas}{No aplica.}
+	\UCitem{Salidas}{Formas de pago de el \getElementById[Stakeholder]{Cliente}. asociadas a su cuenta.}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem El \getElementById[Stakeholder]{Cliente}. debe de tener almenos una forma de pago registrada distinta a efectivo.
+		\Titem No debe haber ningún pedido activo que tenga como forma de pago la opción que se desea eleiminar.
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem El \getElementById[Stakeholder]{Cliente}. podra ingresar una nueva forma de pago que sea del mismo tipo que la que se elimino.
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem
+		\end{Titemize}
+	}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{No es posible eliminar la forma de pago}
+		\end{Titemize}
+	}
+	\UCitem{Viene de}{\getElementById[CU]{CUMP2.1}}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Presiona sobre el texto eliminar correspondiente a la forma de pago que quiere eliminar como se muestra en la pantalla  \getElementById[IU]{IUMP2.1.1A}.
+		\UCpaso Muestra un mensaje de alerta preguntando si realmente desea eliminar esa forma de pago.
+		\UCpaso[\UCactor]Presiona el  botón \IUbutton{Aceptar} \refTray{A}.
+		\UCpaso Verifica que no exista ningun pedido activo de el \getElementById[Stakeholder]{Cliente} que tenga asociada la forma de pago que se va a eliminar\refTray{B}
+		\UCpaso Muestra el mensaje  \getElementById[MSG]{MSG1}
+		\UCpaso Cambia el estado de la forma de pago a eliminada.
+		\UCpaso Muestra la pantalla  \getElementById[IU]{IUMP2.1.1A}
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{El \getElementById[Stakeholder]{Cliente} presiona el botón  \IUbutton{Cancelar}}
+		\UCpaso Cancela la operación
+		\UCpaso Muestra la pantalla  \getElementById[IU]{IUMP2.1.1A}
+	\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{B}{No es posible eliminar la forma de pago}
+		\UCpaso Muestra el mensaje  \getElementById[MSG]{MSG2}
+		\UCpaso Muestra la pantalla  \getElementById[IU]{IUMP2.1.1A}
+	\end{UCtrayectoriaA}
+	

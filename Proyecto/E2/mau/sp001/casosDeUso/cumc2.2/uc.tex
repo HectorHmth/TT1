@@ -1,0 +1,74 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC2.2}{Consultar notificaciones}{
+Permite consultar las notificaciones que se han emitido al cliente, a través del cual se realiza un comunicado para fines de informar, advertir, confirmar o solicitar alguna acción que se requiera en el sistema, por ejemplo: informar que se realizó una entrega de una orden, notificar que el cliente califique un proucto que le ha sido entregado, así como calificar un local en el cual se realizó una compra, en  existe un producto que puedes adquirirlo inmediatamente o que hay productos en oferta.\\ 
+Las notificaciones se clasificarán en \textbf{Pedidos} y \textbf{Ofertas} con base en la regla de negocio \getElementById[BR]{BR-MC008}.
+}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Diana Laura Mejía Mendoza}
+	\UCitem{Supervisó}{}
+	\UCitem{Prioridad}{Media}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Media}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\begin{Titemize}
+	\Titem \getElementById[Stakeholder]{Cliente}
+	\end{Titemize}}
+	\UCitem{Propósito}{Proporcionar un mecanismo que permita consular notificaciones que sean de interés para el cliente, como calificar un producto o un local donde realizó una compra, .}
+	\UCitem{Entradas}{Ninguna}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem \getElementById[MSG]{MSG03}
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem La persona que va a ingresar al sistema debe estar registrada en el sistema.
+		\Titem No debe existir una sesión activa.
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem La persona tiene acceso a la página de bienvenida que le corresponde a su 
+		\Titem La persona tiene
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR]{BR-MAU01}
+		\end{Titemize}
+	}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Cuando no existen notificaciones para el usuario}{se muestra el mensaje \getElementById[MSG]{MSG02}, en la pantalla \getElementById[UI]{UIMC2.2a}.}
+		\end{Titemize}
+	}
+	\UCitem{Viene de}{No aplica.}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Solicita consultar las notificaciones presionando la opción  \bellIcon \textbf{Notificaciones} del menú \getElementById[UI]{MN01A}.
+		\UCpaso \label{p1} Obtiene las notificaciones \textbf{Pedidos} del usuario con base en la regla de negocio \getElementById[BR]{BR-MC007}. \refTray{A}
+		\UCpaso Verifica que exista por lo menos una notificación.\refErr{Uno}
+		\UCpaso Muestra la pantalla \getElementById[UI]{UIMC2.2a} con la información obtenida en los pasos \ref{p1} y \ref{p2}.
+		\UCpaso \label{Getiona} Gestiona las notificaciones obtenidas en el paso \ref{p1}. \refTray{A} \refTray{B}
+	\end{UCtrayectoria}
+	
+	\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El cliente requiere regresar a la pantalla anterior.}
+		\UCpaso Presiona el icono \regresarIcon de la pantalla \getElementById[UI]{UIMC2.2a}.
+		
+		\UCpaso Muestra la pantalla \getElementById[UI]{MN01A}.
+	
+	\end{UCtrayectoriaA}
+	
+
+	\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{Cuando el actor requiere consultar las notificaciones clasificadas como \textbf{Ofertas}.}
+		\UCpaso Presiona la opción \textbf{Ofertas} de la pantalla \getElementById[UI]{UIMC2.2a}.
+		
+		\UCpaso Muestra la pantalla \getElementById[UI]{MN01A}.
+	
+	\end{UCtrayectoriaA}
+	
+\subsection{Puntos de extensión}
+
+\UCExtensionPoint{Calificar Producto}{El \getElementById[Stakeholder]{Cliente} requiere Calificar un producto que le fue entregado}{En el paso \ref{Gestiona} de la trayectoria principal}{\getElementById[CU]{CUMC4.2.1}}
+
+\UCExtensionPoint{Calificar Local}{El \getElementById[Stakeholder]{Cliente} requiere Calificar un local en el cual realizó una compra}{En el paso \ref{Gestiona} de la trayectoria principal}{\getElementById[CU]{CUMC3.1.1}}
+	
+\UCExtensionPoint{Consultar Producto}{El \getElementById[Stakeholder]{Cliente} requiere consultar un producto que esta en oferta}{En el paso \ref{Gestiona} de la trayectoria principal}{\getElementById[CU]{CUMC3.2.1}}

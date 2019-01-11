@@ -1,0 +1,156 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{capaCuatro}[2017/06/24 Capa cuatro. Business]
+
+\RequirePackage{template/capaTres}
+\RequirePackage{keystroke}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Requerimientos
+%Entorno:ReqSpec
+%Descripción: Crea una tabla en la cual se pueden colocar los requerimientos 
+%definidos para el proyecto, aplicación o sistema.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{ReqSpec}{%
+	%\subsubsection{Especificación de Requerimientos}
+	%\begin{center}
+	%\begin{longtable}[H]{|p{0.17\textwidth}|p{0.15\textwidth}|p{0.10\textwidth}|p{0.35\textwidth}|p{0.10\textwidth}|}
+	%\hline
+	%\rowcolor{principal}
+	%\bf\color{blanco}Identificador & \bf\color{blanco}Módulo &\bf\color{blanco}Tipo & \bf\color{blanco} Descripción & \bf\color{blanco} Prioridad\\\hline
+	%\endhead	
+}{	
+	%\hline
+	%\end{longtable}
+	%\end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Requerimientos
+%Comando:Req
+%Descripción: Agrega una fila a la tabla creada por el entorno ReqSpec y agrega
+%el ID y el nombre del requerimiento a la base de datos de Requerimientos
+%Argumentos:
+%	1 Identificador
+%	2 Nombre
+%	3 Módulo
+%	4 Tipo
+%	5 Descripción
+%	6 Prioridad
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Req}[7][]{%
+	\addElement{#2}{Requerimiento}{#3}{#7}{}{}%
+	%\rule{\textwidth}{0.1pt}%
+	\subsubsection{#2-#3}%
+	\hypertarget{#2}{}%
+		\begin{description}%
+			\item[Módulo:]#4%
+			\item[Tipo:]#5%
+			\item[Prioridad:]#7%
+			\item[Descripción:]#6%
+			\IfStrEq{#1}{}{}{\item[Criterio de Conclusión:]#1}
+		\end{description}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Criterios de Conclusión para Requerimientos
+%Entorno:Criterios
+%Descripción: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{Criterios}{
+	\begin{longtable}[H]{|p{0.20\textwidth}|p{0.20\textwidth}|p{0.60\textwidth}|}
+	\hline
+	\rowcolor{principal}
+	\bf\color{blanco}Identificador & \bf\color{blanco}Requerimiento &\bf\color{blanco}Descripción del Criterio\\\hline
+	\endhead
+
+}{
+	\hline
+	\end{longtable}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Criterios de Conclusión para Requerimientos
+%Comando:CriterioReq
+%Descripción: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\CriterioReq}[4]{
+	\hypertarget{#1}{}
+	{#1}-{#2} & {#3} & {#4}\\\hline
+}
+
+
+\newenvironment{StakeHolder}[3]{
+	\addElement{#1}{Stakeholder}{#2}{}{}{}%
+	%\rule{\textwidth}{0.5pt}
+	\subsubsection{ST-#2}
+	\hypertarget{#1}{}%
+	\begin{description}
+		\item[Descripción:]#3
+}{
+	\end{description}
+}
+
+
+\newenvironment{Actor}[3]{
+	\addElement{#1}{Stakeholder}{#2}{}{}{}%
+	%\rule{\textwidth}{0.5pt}
+	\subsubsection{Actor:#2}
+	\hypertarget{#1}{}%
+	\begin{description}
+		\item[Descripción:]#3
+}{
+	\end{description}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Entorno: UserStory
+% Descripción: 
+% Parámetros:
+		%1 ID
+		%2 Nombre
+		%3 Descripción
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{UserStory}[5]{
+	\addElement{#1}{UserStory}{#2}{}{}{}%
+	\newpage
+	\section{#1 - #2}
+	\begin{longtable}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+	\hline
+	\begin{center}{\bf Identificador:} #1\end{center} &\begin{center}{\bf Título:} #2\end{center}\\
+	\endhead
+	\hline
+	\multicolumn{2}{|p{\textwidth}|}{\textbf{Descripción:} {#3}} \\
+	\hline
+}{
+	\end{longtable}
+}
+
+
+\newcommand{\userStoryItem}[2]{\bf #1 & #2\\\hline}
+
+
+\newenvironment{UI}[5][0.5]{
+	\newpage
+	\addElement{#2}{Interfaz de Usuario}{#3}{}{}{}%
+	\subsection{#2 #3}%
+	\begin{description}%
+		\item[Descripción:]#4%
+		\item[Diseño:]\hspace{0.5pt}%
+				\begin{figure}[hbtp!]
+					\begin{center}
+						\includegraphics[width=#1\textwidth]{#5}
+						\caption{#2 #3}
+						\label{fig:#2}
+					\end{center}
+				\end{figure}
+
+}{
+	\end{description}
+}
+

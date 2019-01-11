@@ -1,0 +1,55 @@
+¿Realizas compras en la cafetería (barra de café) de la escuela?
+Si o No
+
+¿Con que frecuencia haces compras en la cafetería a la semana?
+1 o 2 , 3 o 4, diario
+
+¿Cuántas veces compras en la cafetería al día?
+
+
+¿En que horario haces comunmente tus compras?
+
+
+¿Cúanto tiempo te tardas en promedio en la fila para realizar un pedido?
+ 0 - 5 min 5 - 15  min etc
+
+
+¿Qué haces cúando el tiempo de espera es mayor al que tenías contemplado?
+Sigues esperando  Buscas otras opciones No compras nada
+
+
+¿Cómo te sientes cuando estás esperando en la fila?
+
+
+¿Cómo te sientes cuando el producto que deseabas esta agotado?
+
+
+¿Consideras que el tiempo de espera en la fila afecta la realización de otras actividades?
+si o no
+
+
+Considerando lo anterior. ¿A qué nivel esto afectaría en tu decisión de volver a comprar en el mismo lugar?
+
+====== Aquí va la parte de nuestra aplicación ==========================
+
+¿Realizarías tus pedidos desde una aplicación móvil?
+
+¿Considerarías comodo realizar pedidos desde una aplicación móvil?
+
+¿Qué sistema operativo posee tu teléfono celular?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+%!TEX root = ../../prueba.tex
+\begin{UseCase}{CUMP2.1}{Administrar formas de pago}{Cuando el \getElementById[Stakeholder]{Cliente} requiera agregar una nueva forma de pago, editar la información de formas de pago ya registradas, eliminar una forma de pago o seleccionar una forma de pago por defecto debe presionar \userAccountIcon{} del menú \getElementById[IU]{MN01} y después seleccionar la opción \IUbutton{Forma de Pago}, después el sistema realizará la búsqueda de  las formas de pago registradas del cliente y las mostrará en la pantalla \getElementById[IU]{IUMP2.1}. Cuando una forma de pago sea agregada esta estará disponible para su selección cuando el cliente termine de agregar o eliminar los productos de su carrito de compras, en caso de que una forma de pago sea eliminada, esta ya no estará disponible para su selección pero para proteger la integridad de los datos permanecerá almacenada y asociada a las ordenes cuyo estado sea \textbf{Entregado}.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Francisco Isidoro Mera Torres}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Media}
+	\UCitem{Madurez}{}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{Definir un mecanismo mediante el cual el Cliente pueda agregar, eliminar o editar las formas de pago que va a utilizar para comprar artículos en el sistema.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{Persona.nombre}.
+		\Titem \getElementById[Entidad]{Cuenta}.
+		\Titem \getElementById[Entidad]{formaPago.estado}.
+	\end{Titemize}}
+	\UCitem{Salidas}{
+	\begin{Titemize}
+			\Titem \getElementById[Entidad]{Persona.nombre}.
+			\Titem \getElementById[Entidad]{Persona.foto}.
+			\Titem \getElementById[Entidad]{tipoForma.nombreTipo}.
+			\Titem \getElementById[Entidad]{tipoTarjeta.nombreTipo}.
+			\Titem \getElementById[Entidad]{tarjeta.numeroTarjeta}.
+		\end{Titemize}}
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			\Titem El cliente debe haber iniciado sesión.
+			\Titem El cliente debe tener al menos una forma de pago registrada.
+     \end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+			\Titem El cliente podrá agregar una nueva forma de pago.
+			\Titem El cliente podrá editar la información de una forma de pago.
+			\Titem El cliente podrá eliminar una forma de pago.
+		\end{Titemize}
+	}
+	\UCitem{Reglas de Negocio}{No aplica.}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{No existen formas de pago registradas para la cuenta del cliente}{se muestra el mensaje \getElementById[MSG]{MSG3}.}
+		\end{Titemize}}
+	\UCitem{Viene de}{\getElementById[CU]{CUMC2}}
+	\end{UseCase}
+
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Indica que quiere administrar sus formas de pago presionando el botón \userAccountIcon{Cuenta} del menú \getElementById[IU]{MN01}.
+		\UCpaso Obtiene la información de la cuenta del actor.
+		\UCpaso Redirige a la pantalla \getElementById[IU]{MN01A}.
+		\UCpaso[\UCactor] Presiona el botón \efectivoIcon{Forma de Pago}.
+		\UCpaso Obtiene la información de las formas de pago registradas por el actor cuyo estado sea \textbf{Registrada} o \textbf{Editada}.\refErr{Uno}
+		\UCpaso \label{CUMP2.1:Fin}Muestra la información de las formas de pago como se muestra en la pantalla \getElementById[IU]{IUMP2.1}.
+	\end{UCtrayectoria}
+	
+	\UCExtensionPoint{Agregar una nueva forma de pago}{El cliente va a agregar una nueva forma de pago con la cual poder realizar la compra de artículos en el sistema}{Desde el paso \ref{CUMP2.1:Fin}}{\getElementById[CU]{CUMP2.1.1}}
+	
+		\UCExtensionPoint{Eliminar forma de pago}{El cliente va a eliminar una forma de pago.}{Desde el paso \ref{CUMP2.1:Fin}}{\getElementById[CU]{CUMP2.1.2}}	
+	

@@ -1,0 +1,46 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC3.1}{Consultar Información de Local}{Cuando el \getElementById[Stakeholder]{Cliente} desea conocer más información acerca de un local, como por ejemplo, la ubicación del Local, el horario y días en los que es posible comprar productos, presionará el botón \IUbutton{Ver Local} de la pantalla \getElementById[UI]{UIMC3.2}. Exl sistema obtendrá la información del local seleccionado y la desplegará en la pantalla \getElementById[UI]{UIMC3.1}.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Francisco Isidoro Mera Torres}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{Definir un mecanismo mediante el cual el Cliente pueda conocer información detallada de los locales que están disponibles en el sistema para realizar la compra de productos.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{local.nuLongitud}.
+		\Titem \getElementById[Entidad]{local.nuLatitud}.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{local.nombreLocal}.
+		\Titem \getElementById[Entidad]{local.horaInicio}.
+		\Titem \getElementById[Entidad]{local.horaFin}.
+		\Titem \getElementById[Entidad]{local.nuRating}.
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem El cliente debe haber iniciado sesión en la aplicación.
+		\Titem Debe existir al menos un local en estado \textbf{Publicado} en el sistema.
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem El cliente podrá visualizar en pantalla la información más relevante del local.
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{\begin{Titemize}
+		\Titem No aplica.
+	\end{Titemize}}
+	\UCitem{Errores}{\begin{Titemize}
+		\Titem \UCerr{Uno}{Cuando la longitud y la latitud de un local no proporcionan información consistente de la ubicación del local}{se desplegará en pantalla el mensaje \getElementById[MSG]{MSGMOR3}}
+	\end{Titemize}}
+	\UCitem{Viene de}{\getElementById[CU]{CUMC3}}
+	\end{UseCase}
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Indica que va a consultar la información de un local presionando el botón \IUbutton{Ver Local} en la pantalla \getElementById[UI]{UIMC3.2}.
+		\UCpaso Obtiene la longitud y la latitud del local seleccionado.
+		\UCpaso Obtiene el domicilio geográfico obtenido de la consulta.
+		\UCpaso Muestra la información del local como se muestra en la pantalla \getElementById[UI]{UIMC3.1}.\refErr{Uno}.
+	\end{UCtrayectoria}
+	

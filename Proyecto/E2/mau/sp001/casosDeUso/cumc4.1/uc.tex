@@ -1,0 +1,72 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC07}{Consultar producto}{
+Permite visualizar la información general de un producto para que una \getElementById[Stakeholder]{Persona} o un \getElementById[Stakeholder]{Cliente} se percate si el producto de interes, es el que el requiere. \\  
+Es importante saber si el producto está diponible o se ha agotado ya que solo podrá visualizar la descripción general del producto si se encuentra disponible. \\ Un producto pasa al estado \textbf{Agotado}, debido a que en el local se terminó la existencia de dicho producto, o el local donde ofertan el producto ha finalizado su jornada laboral. \\
+Por otra parte al consultar la información del producto se podrá visualizar el promedio de la calificación que le han otorgado, es importante ya que ayuda a incrementar la referencia que tiene este producto y así con base en la calificación y el criterio del cliente realice su compra.\\
+Una gran 
+}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Diana Laura Mejía Mendoza}
+	\UCitem{Supervisó}{Francisco Isidoro Mera Torres}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\begin{Titemize}
+	\Titem \getElementById[Stakeholder]{Persona}
+	\Titem \getElementById[Stakeholder]{Cliente}
+	\end{Titemize}}
+	\UCitem{Propósito}{Proporcionar un mecanismo .}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem \getElementById[Entidad]{Cuenta.nombreDeUsuario}.
+		\Titem \getElementById[Entidad]{Cuenta.contrasena}.
+		\Titem \getElementById[Entidad]{Acceso.numeroIntentos}.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem \getElementById[MSG]{MSG03}
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem La persona que va a ingresar al sistema debe estar registrada en el sistema.
+		\Titem No debe existir una sesión activa.
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{\begin{Titemize}
+		\Titem La persona tiene acceso a la página de bienvenida que le corresponde a su 
+		\Titem La persona tiene
+	\end{Titemize}}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR]{BR-MAU01}
+		\end{Titemize}
+	}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Los campos marcados en el formulario como obligatorios están vacíos}{se muestra el mensaje \getElementById[MSG]{MSG02}}
+		\end{Titemize}
+	}
+	\UCitem{Viene de}{No aplica.}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Solicita consultar la información de un producto dando clic en el producto deseado de la pantalla \getElementById[UIMC07]{Carrito de compras}.
+		\UCpaso Verifica que el estado del producto sea \textbf{Disponible} con base en el \textbf{Modelo de ciclo de vida de un producto}.\refErr{Uno}
+		\UCpaso Obtiene la foto, el nombre, la descripción y precio del producto seleccionado.
+		\UCpaso Obtiene el promedio de la calificación que los clientes han asignado al producto con base en la regla de negocio \textbf{REGLA DE NEGOCIO}.
+		\UCpaso Habilita el campo \textbf{Ingresar nota}.
+		\UCpaso Muestra la pantalla \getElementById[UIMC07]{Consultar producto} con la información obtenida.
+		\UCpaso [\UCactor] Ingresa la información solicitada.
+		\UCpaso [\UCactor] \label{ConsultarProducto-Productos} Selecciona el número de productos que requiere comprar.
+		\UCpaso Calcula el total de dinero con base en los productos solicitados en el paso \ref{ConsultarProducto-Productos}
+		\UCpaso [\UCactor] Solicita agregar el producto a su carrito de compras presionando el botón \IUbutton{Agregar al carrito}.\refTray{B}
+		\UCpaso Verifica que exista la cantidad de productos solicitados con base en la regla de negocio \textbf{REGLA DE NEGOCIO}.\refTray{C}
+		\UCpaso Muestra la pantalla \getElementById[UIMC07]{Carrito de compras}.
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Cuando el estado del producto es \textbf{Agotado}.}
+		\UCpaso Muestra el mensaje \textbf{AGOTADO} en el producto solitado de la pantalla .
+	
+	\end{UCtrayectoriaA}
+	

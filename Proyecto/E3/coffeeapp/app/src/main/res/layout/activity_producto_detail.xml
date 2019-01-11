@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="mx.ipn.escom.prueba.coffeeapp.viewmodel.ProductoDetailViewModel"/>
+    </data>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.ProductoDetailActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/LocalDetailActionBar"
+            android:id="@+id/productoDetailToolbar"
+            app:title="Información del Producto"
+            android:background="@color/colorPrimaryDark"
+            app:titleTextColor="@color/white" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/not_available"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:padding="16dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.productoLocal.producto.nombreProducto}"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:layout_gravity="start"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:numStars="5"
+                android:layout_marginStart="10dp"
+                android:clickable="false"
+                android:stepSize="0.25"
+                android:rating="@{viewModel.nuRating}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{viewModel.nuRating.toString()}"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.productoLocal.producto.nombreProducto}"
+            android:textStyle="italic"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:padding="5dp"
+            android:layout_marginStart="5dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+            android:text="Descripción"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@{viewModel.productoLocal.producto.descripcion}"
+            android:textStyle="italic"
+            style="@style/TextAppearance.AppCompat.Body1"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:text="@{viewModel.precioVenta}"
+            android:textStyle="bold"
+            android:layout_gravity="start"
+            style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textMultiLine"
+                android:hint="Nota del Cocinero"
+                android:text="@={viewModel.notaAlCocinero}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:text="+1"
+                app:icon="@drawable/ic_add_circle_white_24dp"
+                android:onClick="@{()->viewModel.addCantidad()}"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cantidadTV"
+                android:text="@{viewModel.cantidadText}"
+                android:padding="15dp"
+                android:textAlignment="center" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                app:icon="@drawable/ic_remove_circle_black_24dp"
+                android:text="-1"
+                android:onClick="@{()->viewModel.subtractCantidad()}"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:text="Agregar al Carrito"
+            android:onClick="@{()->viewModel.agregarProducto()}"/>
+    </LinearLayout>
+</ScrollView>
+</layout>

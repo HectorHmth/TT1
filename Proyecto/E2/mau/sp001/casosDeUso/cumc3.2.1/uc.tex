@@ -1,0 +1,64 @@
+%!TEX root = ../../prueba.tex
+
+\begin{UseCase}{CUMC3.2.1}{Consultar producto}{
+Permite visualizar la información general de un producto o un paquete para que un \getElementById[Stakeholder]{Cliente} se percate si el producto de interés es el que desea adquirir. \\  
+Es importante saber si el producto está diponible o se ha agotado ya que solo podrá visualizar la descripción general del producto si se encuentra disponible. \\ Un producto pasa al estado \textbf{Agotado} con base en la \getElementById[MAQ]{MAQLOCAL} , debido a que en el local donde se oferta el producto se terminó la existencia de este, o el local donde ofertan el producto ha finalizado su jornada laboral. \\
+Por otra parte al consultar la información del producto se podrá visualizar el promedio de la calificación que los clientes le han otorgado, es importante ya que ayuda a incrementar la referencia que se tiene de un producto y así con base en la calificación y el criterio del cliente pueda realizar su compra.\\
+}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Diana Laura Mejía Mendoza}
+	\UCitem{Supervisó}{Francisco Isidoro Mera Torres}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Baja}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\begin{Titemize}
+	\Titem \getElementById[Stakeholder]{Cliente}
+	\end{Titemize}}
+	\UCitem{Propósito}{Proporcionar un mecanismo mediante el cual un cliente pueda visualizar la información necesaria de un producto, con el fin de que pueda tomar una desición para realizar la compra del producto.}
+	\UCitem{Entradas}{\begin{Titemize}
+		\Titem Nombre del local.
+	\end{Titemize}}
+	\UCitem{Salidas}{\begin{Titemize}
+		\Titem Ninguna
+	\end{Titemize}}
+	\UCitem{Precondiciones}{\begin{Titemize}
+		\Titem El producto debe tener estado \textbf{Disponible} con base en la \getElementById[MAQ]{MAQLOCAL}.
+	\end{Titemize}}	
+	\UCitem{Postcondiciones}{Ninguna}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR]{BR-MAU01}
+		\end{Titemize}
+	}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{El estado de }{se muestra el mensaje \getElementById[MSG]{MSG02}}
+		\end{Titemize}
+	}
+	\UCitem{Viene de}{No aplica.}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Solicita consultar la información de un producto presionando la imagen del producto deseado de la pantalla \getElementById[UI]{UIMC3.2}.
+		\UCpaso Verifica que el estado del producto sea \textbf{Disponible} con base en la \getElementById[MAQ]{MAQPRODUCTO}  \textbf{Máquina de estados de un producto}. \refErr{Uno}
+		\UCpaso Obtiene la foto, el nombre, la descripción y precio del producto seleccionado.
+		\UCpaso Obtiene el promedio de la calificación que los clientes han asignado al producto con base en la regla de negocio \getElementById[BR]{BR-MC005}.
+		\UCpaso Habilita el campo \textbf{Ingresar nota}.
+		\UCpaso Muestra la pantalla \getElementById[UI]{UIMC3.2.1} con la información obtenida.
+		\UCpaso [\UCactor] Ingresa la información solicitada.
+		\UCpaso [\UCactor] \label{ConsultarProducto-Productos} Selecciona el número de productos que requiere comprar.
+		\UCpaso Calcula el total de dinero con base en los productos solicitados en el paso \ref{ConsultarProducto-Productos}
+		\UCpaso [\UCactor] Solicita agregar el producto a su carrito de compras presionando el botón \IUbutton{Agregar al carrito}.\refTray{B}
+		\UCpaso Verifica que exista la cantidad de productos solicitados con base en la regla de negocio \textbf{REGLA DE NEGOCIO}.\refTray{C}
+		\UCpaso Muestra la pantalla \getElementById[UI]{UIMC4}\textbf{Administrar Carrito de Compras}.
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Cuando el estado del producto es \textbf{Agotado}.} 
+		\UCpaso Muestra el mensaje \textbf{AGOTADO} en el producto solitado de la pantalla .
+	
+	\end{UCtrayectoriaA}
+	

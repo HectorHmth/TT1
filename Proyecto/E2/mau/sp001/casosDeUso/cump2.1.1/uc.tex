@@ -1,0 +1,85 @@
+%!TEX root = ../../prueba.tex
+\begin{UseCase}{CUMP2.1.1}{Agregar Nueva Forma de Pago}{Cuando el \getElementById[Stakeholder]{Cliente} requiera que sus ordenes sean pagadas con algún otro metodo de pago distinto a efectivo como Paypal o Tarjeta de Crédito podrá guardar la información correspondiente para cada metodo de pago que sera usado en el pago de las futuras ordenes segun el \getElementById[Stakeholder]{Cliente} requiera.}
+	\UCitem{Versión}{0.1}
+	\UCitem{Elaboró}{Eliot Uriel Cedillo Vázquez}
+	\UCitem{Supervisó}{Diana Laura Mejía Mendoza}
+	\UCitem{Prioridad}{Alta}
+	\UCitem{Complejidad}{Media}
+	\UCitem{Volatilidad}{Media}
+	\UCitem{Madurez}{Media}
+	\UCsection{Atributos}
+	\UCitem{Actor}{\getElementById[Stakeholder]{Cliente}}
+	\UCitem{Propósito}{Tener distintas opciones de pago con las que se realizaran las ordenes en los locales}
+	\UCitem{Entradas}{
+		\begin{Titemize}
+			\Titem \getElementById[Entidad]{paypal.correoElectronico}.
+			\Titem \getElementById[Entidad]{paypal.contraseña}.
+			\Titem \getElementById[Entidad]{tarjeta.numeroTarjeta}.
+			\Titem \getElementById[Entidad]{tarjeta.fechaVencimiento}.
+			\Titem \getElementById[Entidad]{tarjeta.claveSeguridad}.
+		\end{Titemize}
+	}
+	\UCitem{Salidas}{Formas de pago registradas}
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			\Titem No tener agregada la información correspondiente  a la forma de pago que se quiere agregar.
+                    \end{Titemize}}	
+	\UCitem{Postcondiciones}{Nueva forma de pago agregada}
+	\UCitem{Reglas de Negocio}{
+		\begin{Titemize}
+			\Titem \getElementById[BR]{BR001}
+			\Titem \getElementById[BR]{BR002}
+			\Titem \getElementById[BR]{BR004}
+		\end{Titemize}
+	}
+	\UCitem{Errores}{
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{EL cliente introduce un campo con un formato incorrecto}{Se muestra el mensaje \getElementById[MSG]{MSG6}.}
+			\Titem\UCerr{Dos}{El cliente no introduce un campo obligatorio}{Se muestra el mensaje \getElementById[MSG]{MSG5}.}
+			\Titem \UCerr{Tres}{El cliente introduce mal la longitud de un campo}{Se muestra el mensaje \getElementById[MSG]{MSG8}.}
+		\end{Titemize}
+		
+	}
+	\UCitem{Viene de}{\getElementById[CU]{CUMP2.1}}
+	\end{UseCase}
+	
+	
+	\begin{UCtrayectoria}
+		\UCpaso[\UCactor] Presiona sobre el texto Agregar forma de pago como se muestra en la pantalla \getElementById[IU]{IUMP2.1.1A}. 
+		\UCpaso Muestra la pantalla \getElementById[IU]{IUMP2.1.1B}. 
+		\UCpaso[\UCactor] Presiona sobre la opcion PayPal\refTray{A}
+		\UCpaso Muestra la pantalla  \getElementById[IU]{IUMP2.1.1C}. 
+		\UCpaso[\UCactor]Introduce el \getElementById[Entidad]{paypal.correoElectronico}. de su cuenta de Paypal.
+		\UCpaso[\UCactor]Introduce la \getElementById[Entidad]{paypal.contraseña}. de su cuenta de Paypal.
+		\UCpaso[\UCactor]Presiona el botón Iniciar sesión.
+		\UCpaso Muestra la pantalla \getElementById[IU]{IUMP2.1.1A}. con las formas de pago previamente agregadas junto con la que se acaba de registrar.
+	\end{UCtrayectoria}
+	
+
+	\begin{UCtrayectoriaA}{A}{Selección de forma de pago tarjeta de crédito o débito}
+		\UCpaso[\UCactor]Presiona sobre la opción Tarjeta de crédito o débito .
+		\UCpaso Muestra la pantalla  \getElementById[IU]{IUMP2.1.1D}.
+		 \UCpaso[\UCactor]Introduce el \getElementById[Entidad]{tarjeta.numeroTarjeta}.
+		 \UCpaso[\UCactor]Introduce la \getElementById[Entidad]{tarjeta.fechaVencimiento}.
+		 \UCpaso[\UCactor]Introduce la \getElementById[Entidad]{tarjeta.claveSeguridad}.
+		\UCpaso Verifica que los datos son correctos. \refTray{B}\refTray{C}\refTray{D}
+		\UCpaso Regresa al paso 8 de la \refTray{Principal}
+	\end{UCtrayectoriaA}
+
+	\begin{UCtrayectoriaA}{B}{EL formato de los datos introducidos por el cliente no son correctos}
+		\UCpaso Se muestra el mensaje asociado al error \refErr{Uno}
+		\UCpaso Regresa al paso 2 de la \refTray{A}.
+	\end{UCtrayectoriaA}
+	
+\begin{UCtrayectoriaA}{C}{No se introdujeron algun o algunos campos obligatorios}
+		\UCpaso Se muestra el mensaje asociado al error \refErr{Dos}
+		\UCpaso Regresa al paso 2 de la \refTray{A}.
+	\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}{D}{La longitud de un campo sobrepasa o carece del tamaño requerido}
+		\UCpaso Se muestra el mensaje asociado al error \refErr{Tres}
+		\UCpaso Regresa al paso 2 de la \refTray{A}.
+	\end{UCtrayectoriaA}
+
+
+	

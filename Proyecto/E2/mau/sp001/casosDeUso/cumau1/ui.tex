@@ -1,0 +1,31 @@
+%!TEX root = ../../prueba.tex
+
+%!TEX root = ../../prueba.tex
+\begin{IU}{IUMAU1}{Iniciar Sesión}{En esta pantalla la \getElementById[Stakeholder]{Persona} va a poder ingresar al sistema mediante una serie opciones desplegadas, se podrá visualizar un formulario y las opciones diponibles para iniciar sesión.\\
+		
+La pantalla desplegará la siguiente información:
+\begin{itemize}
+	\item Formulario con los campos: \textbf{Usuario} y \textbf{Constraseña}.
+	\item Botón \textbf{Iniciar Sesión}.
+	\item Botón \textbf{Continuar con Facebook}.
+	\item Botón \textbf{Continuar con Gmail}.
+	\item Botón \textbf{Iniciar App sin registrarse}.
+\end{itemize}}{casosDeUso/cumau1/UIMAU01}
+
+	\item[Acciones:]\hspace{1pt}
+	\begin{Citemize}
+		\item \IUbutton{Iniciar Sesión}. Al presionar este botón se tratará de iniciar sesión con los datos proporcionados en el formulario. Este comportamiento está descrito en el caso de uso \getElementById[CU]{CUMAU1}
+		
+		\item \IUbutton{Continuar con Facebook}. Al presionar este botón se tratará de iniciar sesión por medio de la red social \textbf{Facebook}. Este comportamiento está descrito en el caso de uso \getElementById[CU]{CUMAU1}
+		
+		\item \IUbutton{Continuar con Gmail}. Al presionar este botón se tratará de iniciar sesión por medio de la red social \textbf{Gmail}. Este comportamiento está descrito en el caso de uso \getElementById[CU]{CUMAU1}
+		
+		\item \IUbutton{Usar App sin Registrarse}. Al presonar este botón se dirigirá a la pantalla ''Consultar Locales''
+		
+		\item \textbf{¿Olvidaste tu contraseña?}. Al presionar este enlace se dirigirá a la pantalla ''Recuperar Contraseña''
+		
+		\item \textbf{Regístrate}. Al presionar este enlace se dirigirá a la pantalla \getElementById[IU]{IUMAU1.1}
+		
+		\item \slasheyeIcon{} Al presionar este botón, el contenido del campo ''Contraseña'' se mostrará visible.
+	\end{Citemize}
+\end{IU}
